@@ -39,8 +39,8 @@
         };
 
         return userService.createUser(newUser)
-          .then(function(user) {
-            $location.url('/user/' + user._id);
+          .then(function(response) {
+            $location.url('/user/' + response._id);
           });
       }
     }

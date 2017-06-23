@@ -1,2 +1,2 @@
-require('./services/user.service.server.js');
-require('./services/deck.service.server.js');
+require('./services/user.service.server');
+require('./services/deck.service.server');

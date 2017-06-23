@@ -1,15 +1,17 @@
-var express = require('express');
-var app = express();
+var app = require('./express');
 var bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/public'));
+app.use(app.express.static(__dirname + '/public'));
+
+require("./project/app");
 
 var port = process.env.PORT || 3000;
 
-require("./project/app.js");
-app.listen(port);
+app.listen(port, function() {
+  console.log('Magic happening on port ' + port);
+});

@@ -1,11 +1,16 @@
+<h1>Register</h1>
 <form>
   <div class="container">
-    <label>Username</label>
-    <input required ng-model="username" type="text" placeholder="Username"></input>
-    <label>Password</label>
-    <input required ng-model="password" type="password" placeholder="Password"></input>
-    <label>Confirm Password</label>
-    <input required ng-model="confirmPassword" type="password" placeholder="Confirm Password"></input>
+    <div>
+      <label>Username</label>
+      <input required ng-model="username" type="text" placeholder="Username"></input>
+    </div>
+    <div><label>Password</label>
+      <input required ng-model="password" type="password" placeholder="Password"></input>
+    </div>
+    <div><label>Confirm Password</label>
+      <input required ng-model="confirmPassword" type="password" placeholder="Confirm Password"></input>
+    </div>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
     <a ng-click="model.registerUser(username, password, confirmPassword)" class="btn btn-primary btn-block">Register</a>
   </div>

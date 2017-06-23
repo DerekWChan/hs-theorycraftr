@@ -18,12 +18,17 @@
         return;
       }
 
-      var found = userService.findUserByCredentials(username, password);
+      userService.findUserByCredentials(username, password)
+        .then(userFound, userNotFound);
 
-      if (found !== null) {
-        $location.url("/user/" + found._id);
-      } else {
-        model.message = "Sorry, the user " + username + " was not found. Please try again."
+      function userFound(response) {
+        if(response !== null) {
+          $location.url("/user/" + response._id);
+        }
+      }
+
+      function userNotFound() {
+        model.message = "Sorry, the user" + username + " was not found. Please try again."
       }
     }
   }

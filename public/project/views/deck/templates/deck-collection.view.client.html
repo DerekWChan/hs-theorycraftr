@@ -1,10 +1,9 @@
 <h2>{{model.userId}}</h2>
-<img src="https://www.spreadshirt.com/image-server/v1/designs/1004981592,width=178,height=178/hearthstone-logo.png">
 <a href="#!/user/{{model.userId}}/deck/new" class="btn btn-primary btn-block">Build New Deck</a>
 <div>
   <ul>
     <li ng-repeat="deck in model.decks">
-      <a href="#!/user/{{model.userId}}/deck/{{deck._id}}/details"><h3>{{deck.name}}</h3></a>
+      <a href="#!/user/{{model.userId}}/deck/{{deck._id}}/details">{{deck.name}}</a>
       <a href="#!/user/{{model.userId}}/deck/{{deck._id}}/edit">
         <span class="glyphicon glyphicon-pencil"></span>
       </a>
