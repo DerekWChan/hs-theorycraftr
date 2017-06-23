@@ -29,7 +29,7 @@ app.get('/api/user', findAllUsers);
 function createUser(req, res) {
   var newUser = req.body;
   users.push(newUser);
-  res.json(newUser);
+  res.send(newUser);
 }
 
 function findAllUsers(req, res) {

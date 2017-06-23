@@ -37,7 +37,11 @@
       var url = "/api/user";
       return $http.post(url, newUser)
         .then(function(response) {
+          console.log(response.data);
           return response.data;
+        })
+        .catch(function(error) {
+          console.log("FINALLY");
         });
     }
 
