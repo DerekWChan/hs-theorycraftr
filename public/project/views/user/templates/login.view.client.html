@@ -1,0 +1,13 @@
+<h1>Login</h1>
+<form>
+  <div class="container">
+    <label>Username</label>
+    <input required ng-model="username" type="text" placeholder="Username"></input>
+    <label>Password</label>
+    <input required ng-model="password" type="password" placeholder="Password"></input>
+    <div ng-show="model.message" class="alert">{{model.message}}</div>
+    <a ng-click="model.login(username, password)" class="btn btn-primary btn-block">Login</a>
+    <label>New to Theorycraftr?</label>
+    <a href="#!/register" class="btn btn-primary btn-block">Register</a>
+  </div>
+</form>

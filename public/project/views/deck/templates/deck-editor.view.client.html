@@ -1,0 +1,36 @@
+<form>
+  <div class="container">
+    <div>
+      <label>Name</label>
+      <input ng-model="newInfo.name" type="text" placeholder="{{model.deck.name}}"></input>
+    </div>
+    <div>
+      <label>Class</label>
+      <select ng-model="newInfo.playerClass">
+        <option value="Druid">Druid</option>
+        <option value="Hunter">Hunter</option>
+        <option value="Mage">Mage</option>
+        <option value="Paladin">Paladin</option>
+        <option value="Priest">Priest</option>
+        <option value="Rogue">Rogue</option>
+        <option value="Shaman">Shaman</option>
+        <option value="Warlock">Warlock</option>
+        <option value="Warrior">Warrior</option>
+      </select>
+    </div>
+    <div>
+      <label>Format</format>
+      <select ng-model="newInfo.format">
+        <option value="Standard">Standard</option>
+        <option value="Wild">Wild</option>
+      </select>
+    </div>
+    <div>
+      <label>Description</label>
+      <textarea ng-model="newInfo.description" rows="5" placeholder="{{model.deck.description}}"></textarea>
+    </div>
+    <div ng-show="model.message" class="alert">{{model.message}}</div>
+    <a ng-click="model.updateDeck(newInfo)" class="btn btn-success btn-block">Update Deck</a>
+    <a ng-click="model.deleteDeck()" class="btn btn-danger btn-block">Delete Deck</a>
+  </div>
+</form>

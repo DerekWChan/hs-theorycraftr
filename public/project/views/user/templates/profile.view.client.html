@@ -1,0 +1,16 @@
+<h2>{{model.user.username}}</h2>
+<h2>Email: {{model.user.email}}</h2>
+<h2>Registered on: {{model.user.registrationDate}}</h2>
+<img src="https://www.spreadshirt.com/image-server/v1/designs/1004981592,width=178,height=178/hearthstone-logo.png">
+<a href="#!/user/{{model.userId}}/decks">Decks</a>
+<form>
+  <div class="container">
+    <label>Username</label>
+    <input required ng-model="newInfo.username" type="text" placeholder="{{model.user.username}}"></input>
+    <label>Email</label>
+    <input required ng-model="newInfo.email" type="text" placeholder="{{model.user.email}}"></input>
+    <div ng-show="model.message" class="alert">{{model.message}}</div>
+    <a ng-click="model.updateProfile(newInfo)" class="btn btn-success btn-block">Update Profile</a>
+    <a ng-click="model.deleteUser()" class="btn btn-danger btn-block">Delete Profile</a>
+  </div>
+</form>
