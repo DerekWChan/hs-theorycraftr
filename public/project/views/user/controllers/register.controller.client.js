@@ -23,25 +23,26 @@
         return;
       }
 
-      userService
-        .findUserByUsername(username)
-        .then(
-          function() {
-            model.message = "The username " + username + " is not available.";
-          },
-          function() {
-            var newUser = {
-              _id: (new Date()).getTime() + "",
-              registrationDate: new Date(),
-              username: username,
-              password: password
-            }
-            return userService
-              .createUser(newUser)
-              .then(function(newUser) {
-                $location.url('/user/' + newUser._id);
-              });
+      userService.findUserByUsername(username)
+        .then(usernameUnavailable, usernameAvailable);
+
+      function usernameUnavailable() {
+        model.message = "The username " + username + " is not available.";
+      }
+
+      function usernameAvailable() {
+        var newUser = {
+          _id: (new Date()).getTime() + "",
+          registrationDate: new Date(),
+          username: username,
+          password: password
+        };
+
+        return userService.createUser(newUser)
+          .then(function(user) {
+            $location.url('/user/' + user._id);
           });
+      }
     }
   }
 })();

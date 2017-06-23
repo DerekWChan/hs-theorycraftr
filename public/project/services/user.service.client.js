@@ -37,7 +37,7 @@
       var url = "/api/user";
       return $http.post(url, newUser)
         .then(function(response) {
-            return response.data;
+          return response.data;
         });
     }
 
@@ -84,13 +84,11 @@
     }
 
     function findUserByUsername(username) {
-      for (var u in users) {
-        var user = users[u];
-        if (user.username === username) {
-          return user;
-        }
-      }
-      return null;
+      var url = "/api/user?username=" + username;
+      return $http.get(url)
+        .then(function(response) {
+          return response.data;
+        });
     }
   }
 })();
