@@ -3,7 +3,7 @@
     .module('HearthstoneTheorycraftr')
     .factory('userService', userService);
 
-  function userService() {
+  function userService($http) {
     var users = [{
         _id: "1",
         username: "a",
@@ -34,7 +34,11 @@
     return api;
 
     function createUser(newUser) {
-      users.push(newUser);
+      var url = "/api/user";
+      return $http.post(url, newUser)
+        .then(function(response) {
+            return response.data;
+        });
     }
 
     function updateUser(userId, newInfo) {

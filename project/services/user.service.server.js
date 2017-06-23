@@ -21,8 +21,15 @@ var users = [{
   }
 ];
 
-app.post('', );
-app.get('', );
-app.get('', );
-app.put('', );
-app.delete('', );
+app.post('/api/user', createUser);
+app.get('/api/user/:userId', findUserById);
+app.get('/api/user', findUserByCredentials);
+app.get('/api/user', findUserByUsername);
+app.put('/api/user/:userId', updateUser);
+app.delete('/api/user/:userId', deleteUser);
+
+function createUser(req, res) {
+  var newUser = req.body;
+  users.push(newUser);
+  res.json(newUser);
+}

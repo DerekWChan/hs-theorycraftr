@@ -13,13 +13,6 @@
         return;
       }
 
-      var found = userService.findUserByUsername(username);
-
-      if (found !== null) {
-        model.message = "The username " + username + " is not available.";
-        return;
-      }
-
       if (password === '' || typeof password === 'undefined' || password === null) {
         model.message = "Please type in a password.";
         return;
@@ -30,14 +23,25 @@
         return;
       }
 
-      var newUser = {
-        _id: (new Date()).getTime() + "",
-        registrationDate: new Date(),
-        username: username,
-        password: password
-      }
-      userService.createUser(newUser);
-      $location.url('/user/' + newUser._id);
+      userService
+        .findUserByUsername(username)
+        .then(
+          function() {
+            model.message = "The username " + username + " is not available.";
+          },
+          function() {
+            var newUser = {
+              _id: (new Date()).getTime() + "",
+              registrationDate: new Date(),
+              username: username,
+              password: password
+            }
+            return userService
+              .createUser(newUser)
+              .then(function(newUser) {
+                $location.url('/user/' + newUser._id);
+              });
+          });
     }
   }
 })();
