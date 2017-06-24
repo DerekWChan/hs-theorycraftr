@@ -12,7 +12,29 @@ var deckSchema = mongoose.Schema({
   format: String,
   playerClass: String,
   description: String,
-  cards: [String]
+  cards: [{
+    cardId: String,
+    dbfId: String,
+    name: String,
+    cardSet: String,
+    type: String,
+    faction: String,
+    rarity: String,
+    cost: Number,
+    attack: Number,
+    health: Number,
+    text: String,
+    artist: String,
+    collectible: Boolean,
+    elite: Boolean,
+    playerClass: String,
+    img: String,
+    imgGold: String,
+    locale: String,
+    mechanics: [{
+      name: String
+    }]
+  }]
 }, {
   collection: 'decks'
 });

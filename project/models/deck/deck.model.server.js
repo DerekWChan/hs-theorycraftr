@@ -35,6 +35,5 @@ function findDeckById(deckId) {
 function findAllDecksByUser(userId) {
   return deckModel.find({
     _user: userId
-  })
-  .exec();
+  });
 }
