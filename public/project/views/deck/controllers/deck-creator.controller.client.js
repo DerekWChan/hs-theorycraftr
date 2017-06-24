@@ -25,6 +25,7 @@
       }
 
       var newDeck = {
+        _user: model.userId,
         name: name,
         playerClass: playerClass,
         format: format

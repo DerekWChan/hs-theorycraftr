@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var deckSchema = mongoose.Schema({
   _user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "UserModel"
+    ref: 'UserModel'
   },
   name: String,
   createdOn: {
@@ -14,7 +14,7 @@ var deckSchema = mongoose.Schema({
   description: String,
   cards: [String]
 }, {
-  collection: "decks"
+  collection: 'decks'
 });
 
 module.exports = deckSchema;

@@ -14,10 +14,10 @@ var userSchema = mongoose.Schema({
   email: String,
   decks: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "DeckModel"
+    ref: 'DeckModel'
   }]
 }, {
-  collection: "users"
+  collection: 'users'
 });
 
 module.exports = userSchema;
