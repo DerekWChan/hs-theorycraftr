@@ -2,14 +2,26 @@ div {
   text-align: center;
 }
 
-.catalog-card {
-  position: relative;
-  display: inline-block;
-  width: 150px;
-  margin: -18px -8px;
-  list-style: none;
+.catalog {
+  margin: auto;
 }
 
-.catalog-card img {
-  width: 150px;
+.catalog_card {
+  /*position: relative;
+  display: inline-block;
+  margin: -14px -6px;*/
+  width: 200px;
+  list-style: none;
+  background-color: purple;
+  margin: 2px;
+  padding: 2px;
+}
+
+.catalog_card img {
+  /*width: 100px;*/
+}
+
+.catalog_card a {
+  color: #fff;
+  text-decoration: none;
 }
