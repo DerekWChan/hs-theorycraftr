@@ -8,14 +8,14 @@ var userSchema = mongoose.Schema({
   registrationDate: {
     type: Date,
     default: Date.now
-  }
-  // firstName: String,
-  // lastName: String,
-  // email: String,
-  // decks: [{
-    // type: mongoose.Schema.Types.ObjectId,
-    // ref: "DeckModel"
-  // }]
+  },
+  firstName: String,
+  lastName: String,
+  email: String,
+  decks: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "DeckModel"
+  }]
 }, {
   collection: "users"
 });

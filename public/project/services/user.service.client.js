@@ -15,13 +15,10 @@
     return api;
 
     function createUser(newUser) {
-      console.log('CLIENTSIDE!');
-      console.log(newUser);
       var url = '/api/user';
 
       return $http.post(url, newUser)
         .then(function(response) {
-          console.log('RETURNING FROM THE SERVER');
           return response.data;
         });
     }

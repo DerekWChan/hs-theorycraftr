@@ -32,8 +32,6 @@
 
       function usernameAvailable() {
         var newUser = {
-          _id: (new Date()).getTime() + "",
-          registrationDate: new Date(),
           username: username,
           password: password
         };
