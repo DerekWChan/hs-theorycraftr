@@ -52,7 +52,7 @@ function findAllUsers(req, res) {
   if (username && password) {
     userModel.findUserByCredentials(username, password)
       .then(
-        function(response) {
+        function(user) {
           res.json(user);
         },
         function() {
@@ -62,14 +62,14 @@ function findAllUsers(req, res) {
   // findUserByUsername
   else if (username) {
     userModel.findUserByUsername(username)
-      .then(function(response) {
-        res.json(response)
+      .then(function(user) {
+        res.json(user)
       }, function() {
         res.sendStatus(404)
       });
   } else {
     userModel.findAllUsers()
-      .then(function(response) {
+      .then(function(users) {
         res.json(users);
       });
   }
