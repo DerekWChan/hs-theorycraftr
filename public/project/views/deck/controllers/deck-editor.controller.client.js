@@ -24,7 +24,6 @@
       }
 
       // Initialize model.cardCatalog
-      // TODO
       deckService.findAllCardsForDeck("Standard", "Rogue")
         .then(function(response) {
           model.cardCatalog = response;

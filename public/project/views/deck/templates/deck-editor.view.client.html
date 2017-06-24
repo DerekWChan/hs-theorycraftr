@@ -32,9 +32,27 @@
     </div>
     <div>
       <label>Card Catalog</label>
-      <ul>
-        <li class="catalog-card" ng-repeat="card in model.cardCatalog">
-          <a href="{{card.img}}"><img src="{{card.img}}"></a>
+      <ul class="catalog">
+        <li class="catalog_card" ng-repeat="card in model.cardCatalog">
+          <a href="{{card.img}}">
+            <div>
+              <span>{{card.cost}}</span>
+              <span>{{card.name}}</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <label>Your Deck</label>
+      <ul class="catalog">
+        <li class="catalog_card" ng-repeat="card in model.deck.cards">
+          <a href="{{card.img}}">
+            <div>
+              <span>{{card.cost}}</span>
+              <span>{{card.name}}</span>
+            </div>
+          </a>
         </li>
       </ul>
     </div>
