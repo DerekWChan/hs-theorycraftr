@@ -9,6 +9,8 @@
     model.deckId = $routeParams.deckId;
     model.updateDeck = updateDeck;
     model.deleteDeck = deleteDeck;
+    model.addCardToDeck = addCardToDeck;
+    model.removeCardFromDeck = removeCardFromDeck;
 
     function init() {
       // Initialize model.deck
@@ -41,7 +43,7 @@
         }
 
         function updateFailure() {
-          model.message = "Unable to update deck.";
+          model.message = "Unable to update deck";
         }
       }
     }
@@ -55,8 +57,28 @@
       }
 
       function deleteFailure() {
-        model.message = "Unable to delete deck.";
+        model.message = "Unable to delete deck";
       };
+    }
+
+    function addCardToDeck(card) {
+      deckService.addCardToDeck(card, model.deckId)
+        .then(addSuccess, addFailure);
+
+      function addSuccess() {
+        $route.reload();
+      }
+
+      function addFailure() {
+        model.message = "Unable to add " + card.name;
+      }
+    }
+
+    function removeCardFromDeck(card) {
+      deckService.removeCardFromDeck(card, model.deckId)
+        .then(function() {
+          $route.reload();
+        });
     }
   }
 })();

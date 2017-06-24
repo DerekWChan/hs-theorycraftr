@@ -7,6 +7,8 @@ deckModel.updateDeck = updateDeck;
 deckModel.deleteDeck = deleteDeck;
 deckModel.findDeckById = findDeckById;
 deckModel.findAllDecksByUser = findAllDecksByUser;
+deckModel.addCardToDeck = addCardToDeck;
+deckModel.removeCardFromDeck = removeCardFromDeck;
 
 module.exports = deckModel;
 
@@ -35,5 +37,30 @@ function findDeckById(deckId) {
 function findAllDecksByUser(userId) {
   return deckModel.find({
     _user: userId
+  });
+}
+
+function addCardToDeck(card, deckId) {
+  return deckModel.update({
+    _id: deckId
+  }, {
+    $push: {
+      cards: {
+        $each: [card],
+        $sort: {
+          cost: 1
+        }
+      }
+    }
+  });
+}
+
+function removeCardFromDeck(card, deckId) {
+  return deckModel.update({
+    _id: deckId
+  }, {
+    $pull: {
+      cards: card
+    }
   });
 }

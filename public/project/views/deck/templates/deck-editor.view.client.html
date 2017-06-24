@@ -1,6 +1,6 @@
 <h2>Deck Editor</h2>
 <form>
-  <div class="container">
+  <div>
     <div>
       <label>Name</label>
       <input ng-model="newInfo.name" type="text" placeholder="{{model.deck.name}}"></input>
@@ -31,34 +31,37 @@
       <textarea ng-model="newInfo.description" rows="5" placeholder="{{model.deck.description}}"></textarea>
     </div>
     <div>
-      <label>Card Catalog</label>
-      <ul class="catalog">
-        <li class="catalog_card" ng-repeat="card in model.cardCatalog">
-          <a href="{{card.img}}">
-            <div>
-              <span>{{card.cost}}</span>
-              <span>{{card.name}}</span>
-            </div>
-          </a>
+      <ul class="editor">
+        <li class="col-xs-4 col-xs-offset-2">
+          <label>Card Catalog</label>
+          <ul class="catalog">
+            <li class="btn catalog_card" ng-repeat="card in model.cardCatalog">
+              <a ng-click="model.addCardToDeck(card)">
+                <div>
+                  <span>{{card.cost}}</span>
+                  <span>{{card.name}}</span>
+                </div>
+              </a>
+            </li>
+          </ul>
         </li>
-      </ul>
-    </div>
-    <div>
-      <label>Your Deck</label>
-      <ul class="catalog">
-        <li class="catalog_card" ng-repeat="card in model.deck.cards">
-          <a href="{{card.img}}">
-            <div>
-              <span>{{card.cost}}</span>
-              <span>{{card.name}}</span>
-            </div>
-          </a>
+        <li class="col-xs-4">
+          <label>Your Deck</label>
+          <ul class="catalog">
+            <li class="btn catalog_card" ng-repeat="card in model.deck.cards">
+              <a ng-click="model.removeCardFromDeck(card)">
+                <div>
+                  <span>{{card.cost}}</span>
+                  <span>{{card.name}}</span>
+                </div>
+              </a>
+            </li>
+          </ul>
         </li>
-      </ul>
+      </ul </div>
+      <div ng-show="model.message" class="alert">{{model.message}}</div>
+      <a ng-click="model.updateDeck(newInfo)" class="btn btn-success btn-block">Update Deck</a>
+      <a href="#!/user/{{model.userId}}/decks" class="btn btn-primary btn-block">Back to Collection</a>
+      <a ng-click="model.deleteDeck()" class="btn btn-danger btn-block">Delete Deck</a>
     </div>
-    <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.updateDeck(newInfo)" class="btn btn-success btn-block">Update Deck</a>
-    <a href="#!/user/{{model.userId}}/decks" class="btn btn-primary btn-block">Back to Collection</a>
-    <a ng-click="model.deleteDeck()" class="btn btn-danger btn-block">Delete Deck</a>
-  </div>
 </form>

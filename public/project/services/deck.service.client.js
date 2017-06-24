@@ -10,7 +10,9 @@
       deleteDeck: deleteDeck,
       findDeckById: findDeckById,
       findAllDecksByUser: findAllDecksByUser,
-      findAllCardsForDeck: findAllCardsForDeck
+      findAllCardsForDeck: findAllCardsForDeck,
+      addCardToDeck: addCardToDeck,
+      removeCardFromDeck: removeCardFromDeck
     };
     return api;
 
@@ -63,6 +65,24 @@
       var url = '/api/user/:userId/deck/:deckId/catalog?format=' + format + '&playerClass=' + playerClass;
 
       return $http.get(url)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function addCardToDeck(card, deckId) {
+      var url = '/api/user/:userId/deck/' + deckId + '/cards/add';
+
+      return $http.put(url, card)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function removeCardFromDeck(card, deckId) {
+      var url = '/api/user/:userId/deck/' + deckId + '/cards/remove';
+
+      return $http.put(url, card)
         .then(function(response) {
           return response.data;
         });

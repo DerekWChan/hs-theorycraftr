@@ -7,6 +7,8 @@ app.get('/api/user/:userId/deck/:deckId', findDeckById);
 app.get('/api/user/:userId/decks', findAllDecksByUser);
 app.get('/api/user/:userId/deck/:deckId/catalog', findAllCardsForDeck);
 app.put('/api/user/:userId/deck/:deckId', updateDeck);
+app.put('/api/user/:userId/deck/:deckId/cards/add', addCardToDeck);
+app.put('/api/user/:userId/deck/:deckId/cards/remove', removeCardFromDeck);
 app.delete('/api/user/:userId/deck/:deckId', deleteDeck);
 
 function createDeck(req, res) {
@@ -60,9 +62,29 @@ function findAllCardsForDeck(req, res) {
   var playerClass = req.query.playerClass;
 
   unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/" + playerClass + "?collectible=1")
-  .header("X-Mashape-Key", "7IgAiQK5C5msh3xE6nKH4BYZGKihp1ZHiyejsn91ZKfHr3qHjg")
-  .end(function(result) {
-    res.json(result.body);
-    return;
-  });
+    .header("X-Mashape-Key", "7IgAiQK5C5msh3xE6nKH4BYZGKihp1ZHiyejsn91ZKfHr3qHjg")
+    .end(function(result) {
+      res.json(result.body);
+      return;
+    });
+}
+
+function addCardToDeck(req, res) {
+  var deckId = req.params.deckId;
+  var card = req.body;
+
+  deckModel.addCardToDeck(card, deckId)
+    .then(function() {
+      res.sendStatus(200);
+    });
+}
+
+function removeCardFromDeck(req, res) {
+  var deckId = req.params.deckId;
+  var card = req.body;
+
+  deckModel.removeCardFromDeck(card, deckId)
+    .then(function() {
+      res.sendStatus(200);
+    });
 }

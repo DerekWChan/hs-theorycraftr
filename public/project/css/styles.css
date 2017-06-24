@@ -2,19 +2,33 @@ div {
   text-align: center;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.editor {
+  display: inline-block;
+}
+
 .catalog {
-  margin: auto;
+  /*padding: none;*/
 }
 
 .catalog_card {
   /*position: relative;
   display: inline-block;
   margin: -14px -6px;*/
-  width: 200px;
+  width: 155px;
   list-style: none;
   background-color: purple;
   margin: 2px;
   padding: 2px;
+  font-size: 12px;
+}
+
+.catalog_card:hover {
+  opacity: .5;
 }
 
 .catalog_card img {
