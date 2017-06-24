@@ -25,9 +25,6 @@
       }
 
       var newDeck = {
-        _id: (new Date()).getTime() + "",
-        createdOn: new Date(),
-        creatorId: model.userId,
         name: name,
         playerClass: playerClass,
         format: format

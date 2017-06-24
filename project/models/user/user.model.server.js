@@ -31,7 +31,7 @@ function deleteUser(userId) {
 }
 
 function findUserById(userId) {
-  return userModel.findById(userId)
+  return userModel.findById(userId);
 }
 
 function findAllUsers() {

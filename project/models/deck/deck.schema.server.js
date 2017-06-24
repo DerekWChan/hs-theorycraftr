@@ -5,14 +5,14 @@ var deckSchema = mongoose.Schema({
     ref: "UserModel"
   },
   name: String,
-  dateCreated: {
+  createdOn: {
     type: Date,
     default: Date.now
-  }
+  },
   playerClass: String,
   format: String,
   description: String,
-  cards: [String];
+  cards: [String]
 }, {
   collection: "decks"
 });

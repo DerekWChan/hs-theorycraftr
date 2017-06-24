@@ -53,24 +53,28 @@ function findAllUsers(req, res) {
     userModel.findUserByCredentials(username, password)
       .then(
         function(user) {
-          res.json(user);
-        },
-        function() {
-          res.sendStatus(404);
+          if (user) {
+            res.json(user);
+          } else {
+            res.sendStatus(404);
+          }
         });
+      }
+    // findUserByUsername
+    else if (username) {
+      userModel.findUserByUsername(username)
+      .then(
+        function(user) {
+          if (user) {
+            res.json(user);
+          } else {
+            res.sendStatus(404);
+          }
+        });
+    } else {
+      userModel.findAllUsers()
+        .then(function(users) {
+          res.json(users);
+        });
+    }
   }
-  // findUserByUsername
-  else if (username) {
-    userModel.findUserByUsername(username)
-      .then(function(user) {
-        res.json(user)
-      }, function() {
-        res.sendStatus(404)
-      });
-  } else {
-    userModel.findAllUsers()
-      .then(function(users) {
-        res.json(users);
-      });
-  }
-}
