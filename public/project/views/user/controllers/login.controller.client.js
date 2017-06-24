@@ -28,7 +28,7 @@
       }
 
       function userNotFound() {
-        model.message = "Sorry, the user" + username + " was not found. Please try again."
+        model.message = "Sorry, the user " + username + " was not found. Please try again."
       }
     }
   }

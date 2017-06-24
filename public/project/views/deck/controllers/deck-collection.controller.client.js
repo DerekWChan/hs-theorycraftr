@@ -8,7 +8,12 @@
     model.userId = $routeParams.userId;
 
     function init() {
-      model.decks = deckService.findAllDecksByUser(model.userId);
+      deckService.findAllDecksByUser(model.userId)
+        .then(decksFound);
+
+      function decksFound(response) {
+        model.decks = response;
+      }
     }
     init();
   }

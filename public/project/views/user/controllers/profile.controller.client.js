@@ -3,7 +3,7 @@
     .module('HearthstoneTheorycraftr')
     .controller('profileController', profileController);
 
-  function profileController($location, $routeParams, userService) {
+  function profileController($location, $routeParams, $route, userService) {
     var model = this;
     model.userId = $routeParams.userId;
     model.updateProfile = updateProfile;
@@ -29,12 +29,12 @@
           .then(updateSuccess, updateFailure);
 
         function updateSuccess() {
-          model.message = "Profile updated successfully!";
+          $route.reload();
         }
 
         function updateFailure() {
           model.message = "Unable to update profile.";
-        };
+        }
       }
     }
 
@@ -48,7 +48,7 @@
 
       function deleteFailure() {
         model.message = "Unable to delete profile.";
-      };
+      }
     }
   }
 })();

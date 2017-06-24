@@ -9,7 +9,16 @@
     model.deckId = $routeParams.deckId;
 
     function init() {
-      model.deck = deckService.findDeckById(model.deckId);
+      deckService.findDeckById(model.deckId)
+        .then(deckFound, deckNotFound);
+
+      function deckFound(response) {
+        model.deck = response;
+      }
+
+      function deckNotFound() {
+        model.deck = null;
+      }
     }
     init();
   }

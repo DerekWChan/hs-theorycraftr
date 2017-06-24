@@ -2,21 +2,21 @@ var app = require('../../express');
 
 var users = [{
     _id: "1",
-    registrationDate: "",
+    registrationDate: "January 1 2017",
     username: "a",
     password: "a",
     email: "a@a.com"
   },
   {
     _id: "2",
-    registrationDate: "",
+    registrationDate: "January 2 2017",
     username: "b",
     password: "b",
     email: "b@b.com"
   },
   {
     _id: "3",
-    registrationDate: "",
+    registrationDate: "January 3 2017",
     username: "c",
     password: "c",
     email: "c@c.com"
@@ -31,12 +31,14 @@ app.delete('/api/user/:userId', deleteUser);
 
 function createUser(req, res) {
   var newUser = req.body;
+
   users.push(newUser);
   res.json(newUser);
 }
 
 function updateUser(req, res) {
   var userId = req.params.userId;
+  var newInfo = req.body;
 
   for (var u in users) {
     var user = users[u];
@@ -46,11 +48,14 @@ function updateUser(req, res) {
           user[key] = newInfo[key];
         }
       }
+      res.sendStatus(200);
+      return;
     }
   }
+  res.sendStatus(404);
 }
 
-function deleteUser(userId) {
+function deleteUser(req, res) {
   var userId = req.params.userId;
 
   for (var u in users) {
@@ -106,5 +111,6 @@ function findAllUsers(req, res) {
     return;
   } else {
     res.send(users);
+    return;
   }
 }

@@ -13,5 +13,5 @@ require("./project/app");
 var port = process.env.PORT || 3000;
 
 app.listen(port, function() {
-  console.log('Magic happening on port ' + port);
+  console.log('That minions attack is over ' + port + '!');
 });

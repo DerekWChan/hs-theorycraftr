@@ -3,7 +3,7 @@
     .module('HearthstoneTheorycraftr')
     .controller('deckEditorController', deckEditorController);
 
-  function deckEditorController($location, $routeParams, deckService) {
+  function deckEditorController($location, $routeParams, $route, deckService) {
     var model = this;
     model.userId = $routeParams.userId;
     model.deckId = $routeParams.deckId;
@@ -11,22 +11,45 @@
     model.deleteDeck = deleteDeck;
 
     function init() {
-      model.deck = deckService.findDeckById(model.deckId);
+      deckService.findDeckById(model.deckId)
+        .then(deckFound, deckNotFound);
+
+      function deckFound(response) {
+        model.deck = response;
+      }
+
+      function deckNotFound() {
+        model.deck = null;
+      }
     }
     init();
 
     function updateDeck(newInfo) {
       if (model.deck !== null) {
-        deckService.updateDeck(model.deckId, newInfo);
-        $location.url('/user/' + model.userId + '/decks');
-      } else {
-        model.message = "Unable to update deck.";
+        deckService.updateDeck(model.deckId, newInfo)
+          .then(updateSuccess, updateFailure);
+
+        function updateSuccess() {
+          $route.reload();
+        }
+
+        function updateFailure() {
+          model.message = "Unable to update deck.";
+        }
       }
     }
 
     function deleteDeck() {
-      deckService.deleteDeck(model.deckId);
-      $location.url('/user/' + model.userId + '/decks');
+      deckService.deleteDeck(model.deckId)
+        .then(deleteSuccess, deleteFailure);
+
+        function deleteSuccess() {
+          $location.url('/user/' + model.userId + '/decks');
+        }
+
+        function deleteFailure() {
+          model.message = "Unable to delete deck.";
+        };
     }
   }
 })();

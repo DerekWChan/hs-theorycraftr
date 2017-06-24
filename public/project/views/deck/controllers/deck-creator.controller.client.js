@@ -23,6 +23,7 @@
         model.message = "Please choose a format.";
         return;
       }
+
       var newDeck = {
         _id: (new Date()).getTime() + "",
         createdOn: new Date(),
@@ -31,8 +32,11 @@
         playerClass: playerClass,
         format: format
       }
-      deckService.createDeck(newDeck);
-      $location.url('/user/' + model.userId + '/deck/' + newDeck._id + '/edit');
+
+      deckService.createDeck(newDeck)
+        .then(function(response) {
+          $location.url('/user/' + model.userId + '/deck/' + response._id + '/edit');
+        });
     }
   }
 })();
