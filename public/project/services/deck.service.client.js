@@ -9,7 +9,8 @@
       updateDeck: updateDeck,
       deleteDeck: deleteDeck,
       findDeckById: findDeckById,
-      findAllDecksByUser: findAllDecksByUser
+      findAllDecksByUser: findAllDecksByUser,
+      findAllCardsForDeck: findAllCardsForDeck
     };
     return api;
 
@@ -51,6 +52,15 @@
 
     function findAllDecksByUser(userId) {
       var url = '/api/user/' + userId + '/decks';
+
+      return $http.get(url)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function findAllCardsForDeck(format, playerClass) {
+      var url = '/api/user/:userId/deck/:deckId/catalog?format=' + format + '&playerClass=' + playerClass;
 
       return $http.get(url)
         .then(function(response) {

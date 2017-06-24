@@ -14,21 +14,21 @@
         return;
       }
 
-      if (playerClass === '' || typeof playerClass === 'undefined' || playerClass === null) {
-        model.message = "Please select a class.";
+      if (format === '' || typeof format === 'undefined' || format === null) {
+        model.message = "Please choose a format.";
         return;
       }
 
-      if (format === '' || typeof format === 'undefined' || format === null) {
-        model.message = "Please choose a format.";
+      if (playerClass === '' || typeof playerClass === 'undefined' || playerClass === null) {
+        model.message = "Please select a class.";
         return;
       }
 
       var newDeck = {
         _user: model.userId,
         name: name,
-        playerClass: playerClass,
-        format: format
+        format: format,
+        playerClass: playerClass
       }
 
       deckService.createDeck(newDeck)

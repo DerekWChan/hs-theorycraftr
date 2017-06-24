@@ -6,6 +6,13 @@
       <input required ng-model="name" type="text" placeholder="Deck Name"></input>
     </div>
     <div>
+      <label>Format</format>
+      <select required ng-model="format" ng-model="newInfo.format">
+        <option value="Standard">Standard</option>
+        <option value="Wild">Wild</option>
+      </select>
+    </div>
+    <div>
       <label>Class</label>
       <select required ng-model="playerClass" name="playerClasses">
         <option value="Druid">Druid</option>
@@ -17,13 +24,6 @@
         <option value="Shaman">Shaman</option>
         <option value="Warlock">Warlock</option>
         <option value="Warrior">Warrior</option>
-      </select>
-    </div>
-    <div>
-      <label>Format</format>
-      <select required ng-model="format" ng-model="newInfo.format">
-        <option value="Standard">Standard</option>
-        <option value="Wild">Wild</option>
       </select>
     </div>
     <div ng-show="model.message" class="alert">{{model.message}}</div>

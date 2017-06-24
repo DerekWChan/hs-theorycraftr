@@ -11,6 +11,7 @@
     model.deleteDeck = deleteDeck;
 
     function init() {
+      // Initialize model.deck
       deckService.findDeckById(model.deckId)
         .then(deckFound, deckNotFound);
 
@@ -21,6 +22,13 @@
       function deckNotFound() {
         model.deck = null;
       }
+
+      // Initialize model.cardCatalog
+      // TODO
+      deckService.findAllCardsForDeck("Standard", "Rogue")
+        .then(function(response) {
+          model.cardCatalog = response;
+        });
     }
     init();
 
@@ -43,13 +51,13 @@
       deckService.deleteDeck(model.deckId)
         .then(deleteSuccess, deleteFailure);
 
-        function deleteSuccess() {
-          $location.url('/user/' + model.userId + '/decks');
-        }
+      function deleteSuccess() {
+        $location.url('/user/' + model.userId + '/decks');
+      }
 
-        function deleteFailure() {
-          model.message = "Unable to delete deck.";
-        };
+      function deleteFailure() {
+        model.message = "Unable to delete deck.";
+      };
     }
   }
 })();
