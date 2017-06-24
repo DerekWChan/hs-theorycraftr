@@ -15,10 +15,13 @@
     return api;
 
     function createUser(newUser) {
+      console.log('CLIENTSIDE!');
+      console.log(newUser);
       var url = '/api/user';
 
       return $http.post(url, newUser)
         .then(function(response) {
+          console.log('RETURNING FROM THE SERVER');
           return response.data;
         });
     }
@@ -61,7 +64,7 @@
 
     function findUserByUsername(username) {
       var url = '/api/user?username=' + username;
-      
+
       return $http.get(url)
         .then(function(response) {
           return response.data;

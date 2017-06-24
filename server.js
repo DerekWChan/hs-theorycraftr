@@ -8,10 +8,10 @@ app.use(bodyParser.urlencoded({
 
 app.use(app.express.static(__dirname + '/public'));
 
-require("./project/app");
+require("./project/app.js");
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 9000;
 
 app.listen(port, function() {
-  console.log('That minions attack is over ' + port + '!');
+  console.log('That minion\'s attack is over ' + port + '!');
 });
