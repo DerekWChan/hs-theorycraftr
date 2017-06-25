@@ -40,7 +40,7 @@ function searchDecks(searchTerms) {
   return deckModel.find({
     name: {
       $regex: searchTerms.keywords
-    }//,
+    } //,
     // format: searchTerms.format,
     // playerClass: searchTerms.playerClass
   });

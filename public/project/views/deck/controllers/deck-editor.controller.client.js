@@ -19,21 +19,20 @@
 
       function deckFound(response) {
         model.deck = response;
+        deckService.findAllCardsForDeck(response.format, response.playerClass)
+          .then(function(response) {
+            model.cardCatalog = response;
+          });
       }
 
       function deckNotFound() {
         model.deck = null;
       }
-
-      // Initialize model.cardCatalog
-      deckService.findAllCardsForDeck("Standard", "Rogue")
-        .then(function(response) {
-          model.cardCatalog = response;
-        });
     }
     init();
 
     function updateDeck(newInfo) {
+      console.log(model.deck);
       if (model.deck !== null) {
         deckService.updateDeck(model.deckId, newInfo)
           .then(updateSuccess, updateFailure);
