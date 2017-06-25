@@ -4,10 +4,11 @@
 <div>{{model.deck.playerClass}}</div>
 <div>{{model.deck.description}}</div>
 <div>
-  <ul>
-    <li ng-repeat="card in model.deck.cards">
-      <a href="#!/card/details"><img src="{{card.img}}"></a>
-    </li>
+  <ul class="catalog available_cards">
+    <li class="btn catalog_card" ng-repeat="card in model.deck._cards">
+      <div>
+        <img src="{{card.img}}">
+      </div>
   </ul>
 </div>
 <a href="#!/user/{{model.userId}}/deck/{{model.deckId}}/edit" class="btn btn-primary btn-block">Edit Deck</a>

@@ -2,6 +2,16 @@ div {
   text-align: center;
 }
 
+table {
+  width: 100%;
+}
+
+th, tr, td {
+  text-align: center;
+  padding: 5px;
+  border: 1px black solid;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -12,7 +22,7 @@ ul {
 }
 
 .catalog {
-  height: 500px;
+  height: 200px;
   overflow-y: scroll;
 }
 

@@ -33,7 +33,7 @@
         <li class="col-xs-4">
           <label>Your Deck</label>
           <ul class="catalog user_deck">
-            <li class="btn catalog_card" ng-repeat="card in model.deck.cards">
+            <li class="btn catalog_card" ng-repeat="card in model.deck._cards">
               <a ng-click="model.removeCardFromDeck(card)">
                 <div>
                   <span>{{card.cost}}</span>
@@ -46,7 +46,7 @@
       </ul>
     </div>
       <div ng-show="model.message" class="alert">{{model.message}}</div>
-      <a ng-click="model.updateDeck(newInfo)" class="btn btn-success btn-block">Update Deck</a>
+      <a ng-click="model.updateDeck(newInfo)" class="btn btn-success btn-block">Save Deck</a>
       <a href="#!/user/{{model.userId}}/decks" class="btn btn-primary btn-block">Back to Collection</a>
       <a ng-click="model.deleteDeck()" class="btn btn-danger btn-block">Delete Deck</a>
     </div>

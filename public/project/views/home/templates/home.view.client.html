@@ -1,0 +1,20 @@
+<a href="#!/user/{{model.userId}}/deck/new" class="btn btn-primary btn-block">Build a Deck</a>
+
+<div class="container">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Created by</th>
+      <th>Created on</th>
+      <th>Format</th>
+      <th>Class</th>
+    </tr>
+    <tr ng-repeat="deck in model.allDecks">
+      <td><a href="#!/user/{{deck._user}}/deck/{{deck._id}}/details">{{deck.name}}</a></td>
+      <td><a href="#!/user/{{deck._user}}">{{deck._user}}</a></td>
+      <td>{{deck.createdOn}}</td>
+      <td>{{deck.format}}</td>
+      <td>{{deck.playerClass}}</td>
+    </tr>
+  </table>
+</div>
