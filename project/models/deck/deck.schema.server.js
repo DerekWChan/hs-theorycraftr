@@ -13,7 +13,7 @@ var deckSchema = mongoose.Schema({
   format: String,
   playerClass: String,
   description: String,
-  cards: {
+  _cards: {
     type: [cardSchema]
   }
 }, {

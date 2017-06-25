@@ -3,6 +3,7 @@ var unirest = require('unirest');
 var deckModel = require('../models/deck/deck.model.server.js');
 
 app.post('/api/user/:userId/deck', createDeck);
+app.get('/api/decks', findAllDecks);
 app.get('/api/user/:userId/deck/:deckId', findDeckById);
 app.get('/api/user/:userId/decks', findAllDecksByUser);
 app.get('/api/user/:userId/deck/:deckId/catalog', findAllCardsForDeck);
@@ -36,6 +37,13 @@ function deleteDeck(req, res) {
   deckModel.deleteDeck(deckId)
     .then(function() {
       res.sendStatus(200);
+    });
+}
+
+function findAllDecks(req, res) {
+  deckModel.findAllDecks()
+    .then(function(decks) {
+      res.json(decks);
     });
 }
 

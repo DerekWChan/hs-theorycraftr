@@ -5,6 +5,11 @@ var userSchema = mongoose.Schema({
     unique: true
   },
   password: String,
+  role: {
+    type: String,
+    default: 'GUEST',
+    enum: ['GUEST', 'MEMBER', 'ADMIN']
+  },
   registrationDate: {
     type: Date,
     default: Date.now
@@ -12,7 +17,7 @@ var userSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
   email: String,
-  decks: [{
+  _decks: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'DeckModel'
   }]

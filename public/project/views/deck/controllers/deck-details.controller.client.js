@@ -9,6 +9,7 @@
     model.deckId = $routeParams.deckId;
 
     function init() {
+      // Initialize model.deck
       deckService.findDeckById(model.deckId)
         .then(deckFound, deckNotFound);
 

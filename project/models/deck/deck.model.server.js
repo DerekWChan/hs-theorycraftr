@@ -5,6 +5,7 @@ var deckModel = mongoose.model('DeckModel', deckSchema);
 deckModel.createDeck = createDeck;
 deckModel.updateDeck = updateDeck;
 deckModel.deleteDeck = deleteDeck;
+deckModel.findAllDecks = findAllDecks;
 deckModel.findDeckById = findDeckById;
 deckModel.findAllDecksByUser = findAllDecksByUser;
 deckModel.addCardToDeck = addCardToDeck;
@@ -30,6 +31,10 @@ function deleteDeck(deckId) {
   });
 }
 
+function findAllDecks() {
+  return deckModel.find();
+}
+
 function findDeckById(deckId) {
   return deckModel.findById(deckId);
 }
@@ -45,7 +50,7 @@ function addCardToDeck(card, deckId) {
     _id: deckId
   }, {
     $push: {
-      cards: {
+      _cards: {
         $each: [card],
         $sort: {
           cost: 1
@@ -60,7 +65,7 @@ function removeCardFromDeck(card, deckId) {
     _id: deckId
   }, {
     $pull: {
-      cards: card
+      _cards: card
     }
   });
 }

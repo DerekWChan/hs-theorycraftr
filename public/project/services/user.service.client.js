@@ -8,6 +8,7 @@
       createUser: createUser,
       updateUser: updateUser,
       deleteUser: deleteUser,
+      findAllUsers: findAllUsers,
       findUserById: findUserById,
       findUserByCredentials: findUserByCredentials,
       findUserByUsername: findUserByUsername
@@ -39,6 +40,15 @@
         .then(function(response) {
           return response.data;
         });
+    }
+
+    function findAllUsers() {
+      var url = '/api/user';
+
+      return $http.get(url)
+        .then(function(response) {
+          return response.data;
+        })
     }
 
     function findUserById(userId) {

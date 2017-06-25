@@ -10,6 +10,7 @@
       deleteDeck: deleteDeck,
       findDeckById: findDeckById,
       findAllDecksByUser: findAllDecksByUser,
+      findAllDecks: findAllDecks,
       findAllCardsForDeck: findAllCardsForDeck,
       addCardToDeck: addCardToDeck,
       removeCardFromDeck: removeCardFromDeck
@@ -38,6 +39,15 @@
       var url = '/api/user/:userId/deck/' + deckId;
 
       return $http.delete(url)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function findAllDecks() {
+      var url = '/api/decks';
+
+      return $http.get(url)
         .then(function(response) {
           return response.data;
         });
