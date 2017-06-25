@@ -54,10 +54,10 @@
         });
     }
 
-    function searchDecks(query) {
+    function searchDecks(searchTerms) {
       var url = '/api/decks/search';
 
-      return $http.get(url, query)
+      return $http.post(url, searchTerms)
         .then(function(response) {
           return response.data;
         });

@@ -36,13 +36,13 @@ function findAllDecks() {
   return deckModel.find();
 }
 
-function searchDecks(query) {
+function searchDecks(searchTerms) {
   return deckModel.find({
     name: {
-      $regex: query.keywords
-    },
-    format: query.format,
-    playerClass: query.playerClass
+      $regex: searchTerms.keywords
+    }//,
+    // format: searchTerms.format,
+    // playerClass: searchTerms.playerClass
   });
 }
 

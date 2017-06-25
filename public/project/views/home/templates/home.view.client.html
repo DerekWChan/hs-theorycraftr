@@ -1,24 +1,6 @@
 <p>A lightweight, responsive Hearthstone deck builder for the web.</p>
 <a href="#!/user/{{model.userId}}/deck/new" class="btn btn-primary">Build a Deck</a>
-<div>
-  <input ng-model="query.keywords" type="search"></input>
-  <select ng-model="query.format">
-    <option value="Standard">Standard</option>
-    <option value="Wild">Wild</option>
-  </select>
-  <select ng-model="query.playerClass">
-    <option value="Druid">Druid</option>
-    <option value="Hunter">Hunter</option>
-    <option value="Mage">Mage</option>
-    <option value="Paladin">Paladin</option>
-    <option value="Priest">Priest</option>
-    <option value="Rogue">Rogue</option>
-    <option value="Shaman">Shaman</option>
-    <option value="Warlock">Warlock</option>
-    <option value="Warrior">Warrior</option>
-  </select>
-  <a ng-click="model.searchDecks(query)" class="btn btn-success">Search</a>
-</div>
+<a href="#!/search" class="btn btn-success">Search Decks</a>
 <div class="container">
   <table>
     <tr>

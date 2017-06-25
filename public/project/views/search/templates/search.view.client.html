@@ -1,0 +1,39 @@
+<div>
+  <input ng-model="searchTerms.keywords" type="search" value=""></input>
+  <!-- <select ng-model="searchTerms.format">
+    <option selected value=""></option>
+    <option value="Standard">Standard</option>
+    <option value="Wild">Wild</option>
+  </select>
+  <select ng-model="searchTerms.playerClass">
+    <option selected value=""></option>
+    <option value="Druid">Druid</option>
+    <option value="Hunter">Hunter</option>
+    <option value="Mage">Mage</option>
+    <option value="Paladin">Paladin</option>
+    <option value="Priest">Priest</option>
+    <option value="Rogue">Rogue</option>
+    <option value="Shaman">Shaman</option>
+    <option value="Warlock">Warlock</option>
+    <option value="Warrior">Warrior</option>
+  </select> -->
+  <a ng-click="model.searchDecks(searchTerms)" class="btn btn-success">Search</a>
+</div>
+<div class="container">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Created by</th>
+      <th>Created on</th>
+      <th>Format</th>
+      <th>Class</th>
+    </tr>
+    <tr ng-repeat="deck in model.decksFound">
+      <td><a href="#!/user/{{deck._user}}/deck/{{deck._id}}/details">{{deck.name}}</a></td>
+      <td><a href="#!/user/{{deck._user}}">{{deck._user}}</a></td>
+      <td>{{deck.createdOn}}</td>
+      <td>{{deck.format}}</td>
+      <td>{{deck.playerClass}}</td>
+    </tr>
+  </table>
+</div>

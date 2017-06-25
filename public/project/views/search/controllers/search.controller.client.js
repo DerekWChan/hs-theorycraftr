@@ -1,19 +1,11 @@
 (function() {
   angular
     .module('HearthstoneTheorycraftr')
-    .controller('homeController', homeController);
+    .controller('searchController', searchController);
 
-  function homeController(deckService) {
+  function searchController($route, deckService) {
     var model = this;
     model.searchDecks = searchDecks;
-
-    function init() {
-      deckService.findAllDecks()
-        .then(function(response) {
-          model.allDecks = response;
-        });
-    }
-    init();
 
     function searchDecks(searchTerms) {
       if (searchTerms !== undefined) {
