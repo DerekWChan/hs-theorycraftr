@@ -14,11 +14,11 @@
     </div>
     <div>
       <label>Description</label>
-      <textarea ng-model="newInfo.description" rows="5" placeholder="{{model.deck.description}}"></textarea>
+      <textarea ng-model="newInfo.description" rows="3" columns="10" placeholder="{{model.deck.description}}"></textarea>
     </div>
     <div class="editor">
       <ul>
-        <li class="col-xs-4 col-xs-offset-2">
+        <li class="col-xs-8">
           <label>Card Catalog</label>
           <ul class="catalog available_cards">
             <li class="btn catalog_card" ng-repeat="card in model.cardCatalog">
@@ -30,7 +30,7 @@
             </li>
           </ul>
         </li>
-        <li class="col-xs-4">
+        <li class="col-xs-3">
           <label>Your Deck</label>
           <ul class="catalog user_deck">
             <li class="btn catalog_card" ng-repeat="card in model.deck._cards">
