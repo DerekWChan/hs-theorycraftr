@@ -11,6 +11,8 @@ app.get('/api/user/:userId/deck/:deckId/catalog', findAllCardsForDeck);
 app.put('/api/user/:userId/deck/:deckId', updateDeck);
 app.put('/api/user/:userId/deck/:deckId/cards/add', addCardToDeck);
 app.put('/api/user/:userId/deck/:deckId/cards/remove', removeCardFromDeck);
+app.put('/api/user/:userId/deck/:deckId/comment/new', addCommentToDeck);
+app.put('/api/user/:userId/deck/:deckId/upvote', upvoteDeck);
 app.delete('/api/user/:userId/deck/:deckId', deleteDeck);
 
 function createDeck(req, res) {
@@ -103,6 +105,25 @@ function removeCardFromDeck(req, res) {
   var card = req.body;
 
   deckModel.removeCardFromDeck(card, deckId)
+    .then(function() {
+      res.sendStatus(200);
+    });
+}
+
+function addCommentToDeck(req, res) {
+  var deckId = req.params.deckId;
+  var newComment = req.body;
+
+  deckModel.addCommentToDeck(newComment, deckId)
+    .then(function() {
+      res.sendStatus(200);
+    })
+}
+
+function upvoteDeck(req, res) {
+  var deckId = req.params.deckId;
+
+  deckModel.upvoteDeck(deckId)
     .then(function() {
       res.sendStatus(200);
     });

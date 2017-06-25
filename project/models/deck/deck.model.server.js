@@ -11,6 +11,8 @@ deckModel.findDeckById = findDeckById;
 deckModel.findAllDecksByUser = findAllDecksByUser;
 deckModel.addCardToDeck = addCardToDeck;
 deckModel.removeCardFromDeck = removeCardFromDeck;
+deckModel.addCommentToDeck = addCommentToDeck;
+deckModel.upvoteDeck = upvoteDeck;
 
 module.exports = deckModel;
 
@@ -79,6 +81,26 @@ function removeCardFromDeck(card, deckId) {
       _cards: {
         cardId: card.cardId
       }
+    }
+  });
+}
+
+function addCommentToDeck(newComment, deckId) {
+  return deckModel.update({
+    _id: deckId
+  }, {
+    $push: {
+      _comments: newComment
+    }
+  });
+}
+
+function upvoteDeck(deckId) {
+  return deckModel.update({
+    _id: deckId
+  }, {
+    $inc: {
+      upvotes: 1
     }
   });
 }

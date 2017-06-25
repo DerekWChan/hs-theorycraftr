@@ -1,4 +1,6 @@
 <h2>{{model.deck.name}}</h2>
+<a ng-click="model.upvoteDeck()" class="glyphicon glyphicon-upload"></a>
+<div>{{model.deck.upvotes}}</div>
 <div>Created by: <a href="#!/user/{{model.deck._user}}">{{model.deck._user}}</a></div>
 <div>Created on: {{model.deck.createdOn}}</div>
 <div>{{model.deck.format}}</div>
@@ -11,5 +13,23 @@
         <img src="{{card.img}}">
       </div>
   </ul>
+  <a href="#!/user/{{model.userId}}/deck/{{model.deckId}}/edit" class="btn btn-primary">Edit Deck</a>
 </div>
-<a href="#!/user/{{model.userId}}/deck/{{model.deckId}}/edit" class="btn btn-primary">Edit Deck</a>
+<div>
+  <h2>Comments</h2>
+  <ul>
+    <div>
+      <li ng-repeat="comment in model.deck._comments">
+        <a href="">{{comment._user.username}}</a>
+        <p>{{comment.text}}</p>
+        <p>{{comment.createdOn}}</p>
+      </li>
+    </div>
+  </ul>
+  <div>
+    <p>Leave a comment</p>
+    <textarea ng-model="newComment.text" rows="3" columns="10"></textarea>
+  </div>
+  <div ng-show="model.message" class="alert">{{model.message}}</div>
+  <a ng-click="model.addCommentToDeck(newComment)" class="btn btn-primary">Add Comment</a>
+</div>

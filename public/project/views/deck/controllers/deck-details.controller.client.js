@@ -3,10 +3,12 @@
     .module('HearthstoneTheorycraftr')
     .controller('deckDetailsController', deckDetailsController);
 
-  function deckDetailsController($location, $routeParams, deckService) {
+  function deckDetailsController($location, $routeParams, $route, deckService) {
     var model = this;
     model.userId = $routeParams.userId;
     model.deckId = $routeParams.deckId;
+    model.upvoteDeck = upvoteDeck;
+    model.addCommentToDeck = addCommentToDeck;
 
     function init() {
       // Initialize model.deck
@@ -22,5 +24,21 @@
       }
     }
     init();
+
+    function upvoteDeck() {
+      deckService.upvoteDeck(model.deckId)
+        .then(function(response) {
+          $route.reload();
+        })
+    }
+
+    function addCommentToDeck(newComment) {
+      if (newComment !== undefined) {
+        deckService.addCommentToDeck(newComment, model.deckId)
+          .then(function(response) {
+            $route.reload();
+          });
+      }
+    }
   }
 })();

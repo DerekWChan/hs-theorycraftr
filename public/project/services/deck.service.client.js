@@ -14,7 +14,9 @@
       findAllDecksByUser: findAllDecksByUser,
       findAllCardsForDeck: findAllCardsForDeck,
       addCardToDeck: addCardToDeck,
-      removeCardFromDeck: removeCardFromDeck
+      removeCardFromDeck: removeCardFromDeck,
+      addCommentToDeck: addCommentToDeck,
+      upvoteDeck: upvoteDeck
     };
     return api;
 
@@ -106,6 +108,24 @@
         .then(function(response) {
           return response.data;
         });
+    }
+
+    function addCommentToDeck(newComment, deckId) {
+      var url = '/api/user/:userId/deck/' + deckId + '/comment/new';
+
+      return $http.put(url, newComment)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function upvoteDeck(deckId) {
+      var url = '/api/user/:userId/deck/' + deckId + '/upvote';
+
+      return $http.put(url)
+        .then(function(response) {
+          return response.data;
+        })
     }
   }
 })();

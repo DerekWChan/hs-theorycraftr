@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var cardSchema = require('../card/card.schema.server.js');
+var commentSchema = require('../comment/comment.schema.server.js');
 var deckSchema = mongoose.Schema({
   _user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -15,6 +16,13 @@ var deckSchema = mongoose.Schema({
   description: String,
   _cards: {
     type: [cardSchema]
+  },
+  upvotes: {
+    type: Number,
+    default: 0
+  },
+  _comments: {
+    type: [commentSchema]
   }
 }, {
   collection: 'decks'
