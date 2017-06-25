@@ -90,6 +90,7 @@ function findAllCardsForDeck(req, res) {
 function addCardToDeck(req, res) {
   var deckId = req.params.deckId;
   var card = req.body;
+  card.copyNum = new Date().getTime();
 
   deckModel.addCardToDeck(card, deckId)
     .then(function() {

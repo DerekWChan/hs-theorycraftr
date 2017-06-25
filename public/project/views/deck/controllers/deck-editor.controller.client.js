@@ -32,7 +32,6 @@
     init();
 
     function updateDeck(newInfo) {
-      console.log(model.deck);
       if (model.deck !== null) {
         deckService.updateDeck(model.deckId, newInfo)
           .then(updateSuccess, updateFailure);

@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var cardSchema = mongoose.Schema({
   cardId: String,
   dbfId: String,
+  copyNum: Number,
   name: String,
   cardSet: String,
   type: String,

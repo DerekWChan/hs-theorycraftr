@@ -76,7 +76,9 @@ function removeCardFromDeck(card, deckId) {
     _id: deckId
   }, {
     $pull: {
-      _cards: card
+      _cards: {
+        cardId: card.cardId
+      }
     }
   });
 }
