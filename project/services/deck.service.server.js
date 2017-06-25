@@ -4,6 +4,7 @@ var deckModel = require('../models/deck/deck.model.server.js');
 
 app.post('/api/user/:userId/deck', createDeck);
 app.get('/api/decks', findAllDecks);
+app.get('/api/decks/search', searchDecks);
 app.get('/api/user/:userId/deck/:deckId', findDeckById);
 app.get('/api/user/:userId/decks', findAllDecksByUser);
 app.get('/api/user/:userId/deck/:deckId/catalog', findAllCardsForDeck);
@@ -45,6 +46,15 @@ function findAllDecks(req, res) {
     .then(function(decks) {
       res.json(decks);
     });
+}
+
+function searchDecks(req, res) {
+  var query = req.body;
+
+  deckModel.searchDecks(query)
+    .then(function(decks) {
+      res.json(decks);
+    })
 }
 
 function findDeckById(req, res) {

@@ -6,6 +6,7 @@ deckModel.createDeck = createDeck;
 deckModel.updateDeck = updateDeck;
 deckModel.deleteDeck = deleteDeck;
 deckModel.findAllDecks = findAllDecks;
+deckModel.searchDecks = searchDecks;
 deckModel.findDeckById = findDeckById;
 deckModel.findAllDecksByUser = findAllDecksByUser;
 deckModel.addCardToDeck = addCardToDeck;
@@ -33,6 +34,16 @@ function deleteDeck(deckId) {
 
 function findAllDecks() {
   return deckModel.find();
+}
+
+function searchDecks(query) {
+  return deckModel.find({
+    name: {
+      $regex: query.keywords
+    },
+    format: query.format,
+    playerClass: query.playerClass
+  });
 }
 
 function findDeckById(deckId) {

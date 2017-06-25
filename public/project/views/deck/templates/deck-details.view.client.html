@@ -1,4 +1,5 @@
 <h2>{{model.deck.name}}</h2>
+<div>Created by: <a href="#!/user/{{model.deck._user}}">{{model.deck._user}}</a></div>
 <div>Created on: {{model.deck.createdOn}}</div>
 <div>{{model.deck.format}}</div>
 <div>{{model.deck.playerClass}}</div>
@@ -11,4 +12,4 @@
       </div>
   </ul>
 </div>
-<a href="#!/user/{{model.userId}}/deck/{{model.deckId}}/edit" class="btn btn-primary btn-block">Edit Deck</a>
+<a href="#!/user/{{model.userId}}/deck/{{model.deckId}}/edit" class="btn btn-primary">Edit Deck</a>

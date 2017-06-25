@@ -7,7 +7,7 @@
     </div>
     <div>
       <label>Format</format>
-      <select required ng-model="format" ng-model="newInfo.format">
+      <select required ng-model="format">
         <option value="Standard">Standard</option>
         <option value="Wild">Wild</option>
       </select>
@@ -27,6 +27,6 @@
       </select>
     </div>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.createDeck(name, playerClass, format)" class="btn btn-primary btn-block">Create Deck</a>
+    <a ng-click="model.createDeck(name, playerClass, format)" class="btn btn-primary">Create Deck</a>
   </div>
 </form>

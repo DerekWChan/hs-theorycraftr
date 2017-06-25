@@ -2,7 +2,7 @@
 <p>{{model.user.role}}</p>
 <p>Registered on: {{model.user.registrationDate}}</p>
 <p>Email: {{model.user.email}}</p>
-<a href="#!/user/{{model.userId}}/decks" class="btn btn-primary btn-block">Decks</a>
+<a href="#!/user/{{model.userId}}/decks" class="btn btn-primary">Decks</a>
 <form>
   <div class="container">
     <div><label>Username</label>
@@ -10,7 +10,7 @@
     <div><label>Email</label>
     <input required ng-model="newInfo.email" type="text" placeholder="{{model.user.email}}"></input></div>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.updateProfile(newInfo)" class="btn btn-success btn-block">Update Profile</a>
-    <a ng-click="model.deleteUser()" class="btn btn-danger btn-block">Delete Profile</a>
+    <a ng-click="model.updateProfile(newInfo)" class="btn btn-success">Update Profile</a>
+    <a ng-click="model.deleteUser()" class="btn btn-danger">Delete Profile</a>
   </div>
 </form>

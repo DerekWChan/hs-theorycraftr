@@ -8,9 +8,10 @@
       createDeck: createDeck,
       updateDeck: updateDeck,
       deleteDeck: deleteDeck,
+      findAllDecks: findAllDecks,
+      searchDecks: searchDecks,
       findDeckById: findDeckById,
       findAllDecksByUser: findAllDecksByUser,
-      findAllDecks: findAllDecks,
       findAllCardsForDeck: findAllCardsForDeck,
       addCardToDeck: addCardToDeck,
       removeCardFromDeck: removeCardFromDeck
@@ -48,6 +49,15 @@
       var url = '/api/decks';
 
       return $http.get(url)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function searchDecks(query) {
+      var url = '/api/decks/search';
+
+      return $http.get(url, query)
         .then(function(response) {
           return response.data;
         });

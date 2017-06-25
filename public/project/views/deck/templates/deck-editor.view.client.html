@@ -12,6 +12,7 @@
         <option value="Wild">Wild</option>
       </select>
     </div>
+    <div>{{model.deck.playerClass}}</div>
     <div>
       <label>Description</label>
       <textarea ng-model="newInfo.description" rows="3" columns="10" placeholder="{{model.deck.description}}"></textarea>
@@ -46,8 +47,8 @@
       </ul>
     </div>
       <div ng-show="model.message" class="alert">{{model.message}}</div>
-      <a ng-click="model.updateDeck(newInfo)" class="btn btn-success btn-block">Save Deck</a>
-      <a href="#!/user/{{model.userId}}/decks" class="btn btn-primary btn-block">Back to Collection</a>
-      <a ng-click="model.deleteDeck()" class="btn btn-danger btn-block">Delete Deck</a>
+      <a ng-click="model.updateDeck(newInfo)" class="btn btn-success">Save Deck</a>
+      <a href="#!/user/{{model.userId}}/decks" class="btn btn-primary">Back to Collection</a>
+      <a ng-click="model.deleteDeck()" class="btn btn-danger">Delete Deck</a>
     </div>
 </form>
