@@ -3,31 +3,31 @@
 <p>{{model.user.role}}</p>
 <p>Registered on: {{model.user.registrationDate.slice(0, 10)}}</p>
 <p>Email: {{model.user.email}}</p>
-<a href="#!/user/{{model.userId}}/deck/new" class="btn btn-primary">+ Build Deck</a>
-<a href="#!/user/{{model.userId}}/decks" class="btn btn-primary">Decks</a>
+<a href="#!/user/{{model.userId}}/deck/new" class="btn">+ Build Deck</a>
+<a href="#!/user/{{model.userId}}/decks" class="btn">Decks</a>
 <form>
-  <div class="container">
+  <div class="container col-xs-4 col-xs-offset-4">
     <form>
-      <p>
+      <p class="form-group">
         <label>Username</label>
-        <input ng-model="newInfo.username" type="text" placeholder="{{model.user.username}}"></input>
+        <input ng-model="newInfo.username" class="form-control" type="text" placeholder="{{model.user.username}}"></input>
       </p>
-      <p>
+      <p class="form-group">
         <label>First Name</label>
-        <input ng-model="newInfo.firstName" type="text" placeholder="{{model.user.firstName}}"></input>
+        <input ng-model="newInfo.firstName" class="form-control" type="text" placeholder="{{model.user.firstName}}"></input>
       </p>
-      <p>
+      <p class="form-group">
         <label>Last Name</label>
-        <input ng-model="newInfo.lastName" type="text" placeholder="{{model.user.lastName}}"></input>
+        <input ng-model="newInfo.lastName" class="form-control" type="text" placeholder="{{model.user.lastName}}"></input>
       </p>
-      <p>
+      <p class="form-group">
         <label>Email</label>
-        <input ng-model="newInfo.email" type="text" placeholder="{{model.user.email}}"></input>
+        <input ng-model="newInfo.email" class="form-control" type="text" placeholder="{{model.user.email}}"></input>
       </p>
     </form>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.updateUser(newInfo)" class="btn btn-success">Update Profile</a>
-    <a ng-click="model.logout()" class="btn btn-primary">Logout</a>
-    <a ng-click="model.deleteUser()" class="btn btn-danger">Delete Profile</a>
+    <a ng-click="model.updateUser(newInfo)" class="btn">Update Profile</a>
+    <a ng-click="model.logout()" class="btn">Logout</a>
+    <a ng-click="model.deleteUser()" class="btn">Delete Profile</a>
   </div>
 </form>

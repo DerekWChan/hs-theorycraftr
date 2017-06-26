@@ -2,53 +2,55 @@
 <h2>Deck Editor</h2>
 <form>
   <div>
-    <div>
-      <label>Name</label>
-      <input ng-model="newInfo.name" type="text" placeholder="{{model.deck.name}}"></input>
-    </div>
-    <div>
-      <label>Format</format>
-      <select ng-model="newInfo.format">
+    <div class="editor_info col-xs-4 col-xs-offset-4">
+      <div class="form-group">
+        <label>Name</label>
+        <input ng-model="newInfo.name" class="form-control" type="text" placeholder="{{model.deck.name}}"></input>
+      </div>
+      <div class="form-group">
+        <label>Format</format>
+      <select ng-model="newInfo.format" class="form-control">
         <option value="Standard">Standard</option>
         <option value="Wild">Wild</option>
       </select>
     </div>
-    <div>{{model.deck.playerClass}}</div>
-    <div>
+    <div class="form-group">{{model.deck.playerClass}}</div>
+    <div class="form-group">
       <label>Description</label>
-      <textarea ng-model="newInfo.description" rows="3" columns="10" placeholder="{{model.deck.description}}"></textarea>
+      <textarea ng-model="newInfo.description" class="form-control" rows="3" columns="10" placeholder="{{model.deck.description}}"></textarea>
     </div>
-    <div class="editor">
-      <ul>
-        <li class="col-xs-8">
-          <label>Card Catalog</label>
-          <ul class="catalog available_cards">
-            <li class="btn catalog_card" ng-repeat="card in model.cardCatalog">
-              <a ng-click="model.addCardToDeck(card)">
-                <div>
-                  <img src="{{card.img}}">
-                </div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="col-xs-3">
-          <label>Your Deck</label>
-          <ul class="catalog user_deck">
-            <li class="btn catalog_card" ng-repeat="card in model.deck._cards">
-              <a ng-click="model.removeCardFromDeck(card)">
-                <div>
-                  <span>{{card.cost}}</span>
-                  <span>{{card.name}}</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+    <div ng-show="model.message" class="alert">{{model.message}}</div>
+    <a ng-click="model.updateDeck(newInfo)" class="btn">Save Deck</a>
+    <a ng-click="model.deleteDeck()" class="btn">Delete Deck</a>
     </div>
-      <div ng-show="model.message" class="alert">{{model.message}}</div>
-      <a ng-click="model.updateDeck(newInfo)" class="btn btn-success">Save Deck</a>
-      <a ng-click="model.deleteDeck()" class="btn btn-danger">Delete Deck</a>
-    </div>
+  </div>
+  </div>
+  <div class="editor form-group">
+    <ul>
+      <li class="col-xs-8">
+        <label>Card Catalog</label>
+        <ul class="catalog available_cards">
+          <li class="btn catalog_card" ng-repeat="card in model.cardCatalog">
+            <a ng-click="model.addCardToDeck(card)">
+              <div>
+                <img src="{{card.img}}">
+              </div>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="col-xs-4">
+        <label>Your Deck</label>
+        <ul class="catalog user_deck">
+          <li class="btn catalog_card" ng-repeat="card in model.deck._cards">
+            <a ng-click="model.removeCardFromDeck(card)">
+              <div>
+                <span class="card_mana-cost">{{card.cost}}</span>
+                <span class="card_name">{{card.name}}</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
 </form>

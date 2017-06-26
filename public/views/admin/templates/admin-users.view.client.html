@@ -1,5 +1,5 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
-<a ng-click="createForm = !createForm" class="btn btn-primary">+ Create User</a>
+<a ng-click="createForm = !createForm" class="btn">+ Create User</a>
 <form ng-show="createForm">
   <div>
     <p><label>Username</label>
@@ -21,7 +21,7 @@
       <input ng-model="newUser.role"></input>
     </p>
   </div>
-  <a ng-click="model.createUser(newUser)" class="btn btn-primary">Save User</a>
+  <a ng-click="model.createUser(newUser)" class="btn">Save User</a>
 </form>
 <table>
   <tr>
@@ -53,8 +53,8 @@
       <input ng-model="newInfo.role"></input>
     </td>
     <td>
-      <a ng-click="model.updateUser(user._id, newInfo)" class="btn btn-success">Update</a>
-      <a ng-click="model.deleteUser(user._id)" class="btn btn-danger">Delete</a>
+      <a ng-click="model.updateUser(user._id, newInfo)" class="btn">Update</a>
+      <a ng-click="model.deleteUser(user._id)" class="btn">Delete</a>
     </td>
   </tr>
 </table>

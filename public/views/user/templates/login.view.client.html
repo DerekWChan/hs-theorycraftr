@@ -1,25 +1,27 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
 <h1>Login</h1>
 <form>
-  <div class="container">
-    <div>
+  <div class="container col-xs-4 col-xs-offset-4">
+    <div class="form-group">
       <label>Username</label>
-      <input required ng-model="username" type="text" placeholder="Username"></input>
+      <input required ng-model="username" class="form-control" type="text" placeholder="Username"></input>
     </div>
-    <div>
+    <div class="form-group">
       <label>Password</label>
-      <input required ng-model="password" type="password" placeholder="Password"></input>
+      <input required ng-model="password" class="form-control" type="password" placeholder="Password"></input>
     </div>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.login(username, password)" class="btn btn-success">Login</a>
-    <a href="/auth/facebook" class="btn btn-primary">
+    <a ng-click="model.login(username, password)" class="btn">Login</a>
+    <a href="/auth/facebook" class="btn">
       <span class="fa fa-facebook"></span> Facebook
     </a>
-    <a href="/auth/google" class="btn btn-danger">
+    <a href="/auth/google" class="btn">
       <span class="fa fa-google-plus"></span> Google+
     </a>
+    <div class="form-group">
+      <label>New to Theorycraftr?</label>
+      <a href="#!/register" class="btn">Register Now!</a>
+    </div>
   </div>
-  <label>New to Theorycraftr?</label>
-  <div><a href="#!/register" class="btn btn-primary">Register Now!</a></div>
   </div>
 </form>

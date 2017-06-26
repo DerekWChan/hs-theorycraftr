@@ -1,22 +1,24 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
-<p>A lightweight, responsive Hearthstone deck builder for the web.</p>
-<!-- <a href="#!/user/{{model.currentUser._id}}/deck/new" class="btn btn-primary">+ Build a Deck</a> -->
-<a href="#!/search" class="btn btn-success">Search Decks</a>
-<div class="container">
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Created by</th>
-      <th>Created on</th>
-      <th>Format</th>
-      <th>Class</th>
-    </tr>
-    <tr ng-repeat="deck in model.allDecks">
-      <td><a href="#!/user/{{deck._user}}/deck/{{deck._id}}/details">{{deck.name}}</a></td>
-      <td><a href="#!/user/{{deck._user}}">{{deck.creatorName}}</a></td>
-      <td>{{deck.createdOn.slice(0, 10)}}</td>
-      <td>{{deck.format}}</td>
-      <td>{{deck.playerClass}}</td>
-    </tr>
-  </table>
+<div class="home">
+  <p class="home_slogan">A lightweight, responsive Hearthstone deck builder for the web.</p>
+  <!-- <a href="#!/user/{{model.currentUser._id}}/deck/new" class="btn">+ Build a Deck</a> -->
+  <div class="home_search"><a href="#!/search" class="btn">Search Decks</a></div>
+  <div class="container home_decks">
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Created by</th>
+        <th>Created on</th>
+        <th>Format</th>
+        <th>Class</th>
+      </tr>
+      <tr ng-repeat="deck in model.allDecks">
+        <td><a href="#!/user/{{deck._user}}/deck/{{deck._id}}/details">{{deck.name}}</a></td>
+        <td><a href="#!/user/{{deck._user}}">{{deck.creatorName}}</a></td>
+        <td>{{deck.createdOn.slice(0, 10)}}</td>
+        <td>{{deck.format}}</td>
+        <td>{{deck.playerClass}}</td>
+      </tr>
+    </table>
+  </div>
 </div>
