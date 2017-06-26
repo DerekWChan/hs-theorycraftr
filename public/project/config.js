@@ -1,9 +1,9 @@
 (function() {
   angular
     .module("HearthstoneTheorycraftr")
-    .config(Config);
+    .config(configuration);
 
-  function Config($routeProvider) {
+  function configuration($routeProvider) {
     $routeProvider
       .when("/home", {
         templateUrl: "views/home/templates/home.view.client.html",
@@ -13,27 +13,60 @@
           currentUser: checkCurrentUser
         }
       })
+      // .when("/admin", {
+      //   templateUrl: "views/admin/templates/admin.view.client.html",
+      //   controller: "adminController",
+      //   controllerAs: "model",
+      //   resolve: {
+      //     currentUser: checkAdmin
+      //   }
+      // })
+      // .when("/admin/users", {
+      //   templateUrl: "views/admin/templates/admin-users.view.client.html",
+      //   controller: "adminController",
+      //   controllerAs: "model",
+      //   resolve: {
+      //     currentUser: checkAdmin
+      //   }
+      // })
       .when("/login", {
         templateUrl: "views/user/templates/login.view.client.html",
         controller: "loginController",
-        controllerAs: "model"
+        controllerAs: "model",
+        resolve: {
+          currentUser: checkLoggedIn
+        }
       })
       .when("/register", {
         templateUrl: "views/user/templates/register.view.client.html",
         controller: "registerController",
-        controllerAs: "model"
+        controllerAs: "model",
+        resolve: {
+          currentUser: checkLoggedIn
+        }
       })
       .when("/search", {
         templateUrl: "views/search/templates/search.view.client.html",
         controller: "searchController",
-        controllerAs: "model"
+        controllerAs: "model",
+        resolve: {
+          currentUser: checkCurrentUser
+        }
       })
-      .when("/user/:userId", {
+      .when("/profile", {
         templateUrl: "views/user/templates/profile.view.client.html",
         controller: "profileController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkLoggedIn,
+          currentUser: checkLoggedIn
+        }
+      })
+      .when("/user/:userId", {
+        templateUrl: "views/user/templates/user-details.view.client.html",
+        controller: "userDetailsController",
+        controllerAs: "model",
+        resolve: {
+          currentUser: checkCurrentUser
         }
       })
       .when("/user/:userId/decks", {
@@ -47,7 +80,10 @@
       .when("/user/:userId/deck/:deckId/details", {
         templateUrl: "views/deck/templates/deck-details.view.client.html",
         controller: "deckDetailsController",
-        controllerAs: "model"
+        controllerAs: "model",
+        resolve: {
+          currentUser: checkCurrentUser
+        }
       })
       .when("/user/:userId/deck/new", {
         templateUrl: "views/deck/templates/deck-creator.view.client.html",
@@ -66,10 +102,41 @@
         }
       });
 
+    // All users
+    function checkCurrentUser($q, userService) {
+      var deferred = $q.defer();
+
+      userService.isLoggedIn()
+        .then(function(currentUser) {
+          if (currentUser === '0') {
+            deferred.resolve({});
+          } else {
+            deferred.resolve(currentUser);
+          }
+        });
+      return deferred.promise;
+    }
+
+    // function checkGuestOnly($q, $location, userService) {
+    //   var deferred = $q.defer();
+    //
+    //   userService.isLoggedin()
+    //     .then(function(currentUser) {
+    //       if (currentUser === '0') {
+    //         deferred.resolve({});
+    //       } else {
+    //         deferred.resolve(currentUser);
+    //         $location.url('/profile/' + user._id);
+    //       }
+    //     });
+    //   return deferred.promise;
+    // }
+
+    // Logged in users; members and admins
     function checkLoggedIn($q, $location, userService) {
       var deferred = $q.defer();
 
-      userService.checkLoggedIn()
+      userService.isLoggedIn()
         .then(function(currentUser) {
           if (currentUser === '0') {
             deferred.reject();
@@ -81,33 +148,20 @@
       return deferred.promise;
     }
 
-    function checkCurrentUser($q, userService) {
-      var deferred = $q.defer();
-
-      userService.checkLoggedIn()
-        .then(function(currentUser) {
-          if (currentUser === '0') {
-            deferred.resolve({});
-          } else {
-            deferred.resolve(currentUser);
-          }
-        });
-      return deferred.promise;
-    }
-
-    function checkAdmin($q, $location, userService) {
-      var deferred = $q.defer();
-
-      userService.checkAdmin()
-        .then(function(currentUser) {
-          if (currentUser === '0') {
-            deferred.resolve({});
-            $location.url('/');
-          } else {
-            deferred.resolve(currentUser);
-          }
-        });
-      return deferred.promise;
-    }
+    // Admins
+    // function checkAdmin($q, $location, userService) {
+    //   var deferred = $q.defer();
+    //
+    //   userService.checkAdmin()
+    //     .then(function(currentUser) {
+    //       if (currentUser === '0') {
+    //         deferred.resolve({});
+    //         $location.url('/');
+    //       } else {
+    //         deferred.resolve(currentUser);
+    //       }
+    //     });
+    //   return deferred.promise;
+    // }
   }
 })();

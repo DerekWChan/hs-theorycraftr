@@ -5,7 +5,7 @@
 
   function registerController($location, userService) {
     var model = this;
-    model.registerUser = registerUser;
+    model.register = register;
 
     function register(username, password, confirmPassword) {
       if (username === '' || typeof username === 'undefined' || username === null) {
@@ -36,7 +36,7 @@
           password: password
         };
 
-        return userService.register(user)
+        return userService.register(newUser)
           .then(function(response) {
             $location.url('/user/' + response._id);
           });

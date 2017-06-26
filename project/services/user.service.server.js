@@ -1,17 +1,18 @@
 var app = require('../../express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt-nodejs');
 var userModel = require('../models/user/user.model.server.js');
 
+passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
-passport.use(new LocalStrategy(localStrategy));
 
 app.post('/api/user', createUser);
 app.post('/api/register', register);
 app.post('/api/login', passport.authenticate('local'), login);
 app.post('/api/logout', logout);
-app.get('/api/assignment/checkLoggedIn', checkLoggedIn);
+app.get('/api/loggedin', isLoggedIn);
 app.get('/api/user/:userId', findUserById);
 app.get('/api/user', findAllUsers);
 app.put('/api/user/:userId', updateUser);
@@ -27,15 +28,17 @@ function createUser(req, res) {
 }
 
 function register(req, res) {
-  var user = req.body;
-  userModel.createUser(user)
-    .then(function(user) {
-      if (user) {
-        req.login(user, function(err) {
+  var newUser = req.body;
+  newUser.password = bcrypt.hashSync(newUser.password);
+
+  userModel.createUser(newUser)
+    .then(function(newUser) {
+      if (newUser) {
+        req.login(newUser, function(err) {
           if (err) {
-            res.status(400).send(err);
+            res.sendstatus(400);
           } else {
-            res.json(user);
+            res.json(newUser);
           }
         });
       }
@@ -44,8 +47,15 @@ function register(req, res) {
 
 function login(req, res) {
   var user = req.user;
-
   res.json(user);
+}
+
+function isLoggedIn(req, res) {
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.send('0');
+  }
 }
 
 function logout(req, res) {
@@ -69,29 +79,25 @@ function deserializeUser(user, done) {
 }
 
 function localStrategy(username, password, done) {
-  userModel.findUserByCredentials(username, password)
-    .then(
-      function(user) {
-        if (user.username === username && user.password === password) {
-          return done(null, user);
+  userModel.findUserByUsername(username)
+    .then(function(user) {
+      if (user) {
+        if (bcrypt.compareSync(password, user.password)) {
+          return userModel.findUserByCredentials(username, user.password)
+            .then(function(user) {
+              if (user) {
+                return done(null, user);
+              } else {
+                return done(null, false);
+              }
+            });
         } else {
           return done(null, false);
         }
-      },
-      function(err) {
-        if (err) {
-          return done(err);
-        }
+      } else {
+        return done(null, false);
       }
-    );
-}
-
-function checkLoggedIn(req, res) {
-  if (req.isAuthenticated()) {
-    res.json(req.user);
-  } else {
-    res.send('0');
-  }
+    });
 }
 
 function updateUser(req, res) {

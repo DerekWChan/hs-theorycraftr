@@ -7,7 +7,7 @@
     var model = this;
     model.login = login;
 
-    function login(user) {
+    function login(username, password) {
       if (username === '' || typeof username === 'undefined' || username === null) {
         model.message = "Please type in a username.";
         return;
@@ -18,17 +18,17 @@
         return;
       }
 
-      userService.login(user)
+      userService.login(username, password)
         .then(userFound, userNotFound);
 
       function userFound(response) {
-          $location.url("/user/" + response._id);
-        }
+        $location.url("/user/" + response._id);
       }
 
       function userNotFound() {
-        model.message = "Sorry, the user " + username + " was not found. Please try again."
+        model.message = "Sorry, the user " + username + " was not found. Please try again.";
       }
     }
+
   }
 })();

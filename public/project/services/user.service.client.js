@@ -8,6 +8,7 @@
       createUser: createUser,
       register: register,
       login: login,
+      isLoggedIn: isLoggedIn,
       logout: logout,
       updateUser: updateUser,
       deleteUser: deleteUser,
@@ -27,15 +28,30 @@
         });
     }
 
-    function register(user) {
+    function register(newUser) {
       var url = '/api/register';
-      return $http.post(url, user);
+      return $http.post(url, newUser)
+        .then(function(response) {
+          return response.data;
+        })
     }
 
-    function login(user) {
+    function login(username, password) {
       var url = '/api/login';
+      var credentials = {
+        username: username,
+        password: password
+      }
 
-      return $http.post(url, user)
+      return $http.post(url, credentials)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function isLoggedIn() {
+      var url = '/api/loggedin';
+      return $http.get(url)
         .then(function(response) {
           return response.data;
         });

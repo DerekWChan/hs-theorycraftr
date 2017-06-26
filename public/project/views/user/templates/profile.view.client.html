@@ -11,6 +11,7 @@
     <input required ng-model="newInfo.email" type="text" placeholder="{{model.user.email}}"></input></div>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
     <a ng-click="model.updateProfile(newInfo)" class="btn btn-success">Update Profile</a>
+    <a ng-click="model.logout()" class="btn btn-primary">Logout</a>
     <a ng-click="model.deleteUser()" class="btn btn-danger">Delete Profile</a>
   </div>
 </form>

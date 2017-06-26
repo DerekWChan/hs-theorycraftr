@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
-  secret: process.env.SESSION_SECRET
+  secret: 'process.env.SESSION_SECRET'
 }));
 app.use(passport.initialize());
 app.use(passport.session());
