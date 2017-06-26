@@ -6,7 +6,6 @@
   function deckDetailsController($location, $routeParams, $route, currentUser, deckService) {
     var model = this;
     model.currentUser = currentUser;
-    model.userId = $routeParams.userId;
     model.deckId = $routeParams.deckId;
     model.addCommentToDeck = addCommentToDeck;
     model.upvoteDeck = upvoteDeck;

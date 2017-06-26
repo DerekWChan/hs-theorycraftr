@@ -45,7 +45,7 @@
       .then(deleteSuccess, deleteFailure);
 
       function deleteSuccess() {
-        $location.url('/home');
+        $location.url('/');
       }
 
       function deleteFailure() {
@@ -56,7 +56,7 @@
     function logout() {
       userService.logout()
         .then(function(response) {
-          $location.url('/home');
+          $location.url('/');
         });
     }
   }

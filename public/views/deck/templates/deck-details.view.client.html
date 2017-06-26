@@ -14,7 +14,6 @@
         <img src="{{card.img}}">
       </div>
   </ul>
-  <a href="#!/user/{{model.userId}}/deck/{{model.deckId}}/edit" class="btn btn-primary">Edit Deck</a>
 </div>
 <div>
   <h2>Comments</h2>
@@ -27,10 +26,10 @@
       </li>
     </div>
   </ul>
-  <div>
+  <div ng-show="model.currentUser._id">
     <p>Leave a comment</p>
     <textarea ng-model="newComment.text" rows="3" columns="10"></textarea>
+    <div ng-show="model.message" class="alert">{{model.message}}</div>
+    <a ng-click="model.addCommentToDeck(newComment)" class="btn btn-primary">Add Comment</a>
   </div>
-  <div ng-show="model.message" class="alert">{{model.message}}</div>
-  <a ng-click="model.addCommentToDeck(newComment)" class="btn btn-primary">Add Comment</a>
 </div>

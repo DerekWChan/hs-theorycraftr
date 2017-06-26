@@ -8,5 +8,5 @@
   </a>
   <a href="#!/login" class="btn btn-success">Login</a>
   <a href="#!/register" class="btn btn-primary">Register</a>
-  <a href="#!/profile/{{model.currentUser._id}}" class="btn btn-danger">Profile</a>
+  <a ng-show="model.currentUser._id" href="#!/profile/{{model.currentUser._id}}" class="btn btn-danger">Profile</a>
 </nav>

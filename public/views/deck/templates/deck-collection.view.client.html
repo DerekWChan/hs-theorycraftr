@@ -4,7 +4,7 @@
   <ul>
     <li ng-repeat="deck in model.decks">
       <a href="#!/user/{{model.userId}}/deck/{{deck._id}}/details">{{deck.name}}</a>
-      <a href="#!/user/{{model.userId}}/deck/{{deck._id}}/edit">
+      <a ng-show="model.currentUser._id === model.userId" href="#!/user/{{model.userId}}/deck/{{deck._id}}/edit">
         <span class="glyphicon glyphicon-pencil"></span>
       </a>
     </li>

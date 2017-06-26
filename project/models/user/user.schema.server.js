@@ -5,11 +5,11 @@ var userSchema = mongoose.Schema({
     unique: true
   },
   password: String,
-  roles: [{
+  roles: {
     type: String,
     default: 'GUEST',
     enum: ['GUEST', 'MEMBER', 'ADMIN']
-  }],
+  },
   registrationDate: {
     type: Date,
     default: Date.now

@@ -74,7 +74,7 @@
         controller: "deckCollectionController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkLoggedIn
+          currentUser: checkCurrentUser
         }
       })
       .when("/user/:userId/deck/:deckId/details", {
@@ -90,7 +90,7 @@
         controller: "deckCreatorController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkLoggedIn
+          currentUser: checkCurrentUser
         }
       })
       .when("/user/:userId/deck/:deckId/edit", {
@@ -98,7 +98,7 @@
         controller: "deckEditorController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkLoggedIn
+          currentUser: checkCurrentUser
         }
       });
 

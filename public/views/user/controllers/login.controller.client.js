@@ -23,7 +23,7 @@
         .then(userFound, userNotFound);
 
       function userFound(response) {
-        $location.url("/user/" + response._id);
+        $location.url("/profile/" + response._id);
       }
 
       function userNotFound() {

@@ -38,7 +38,7 @@
           .then(updateSuccess, updateFailure);
 
         function updateSuccess() {
-          $route.reload();
+          $location.url('/user/' + model.userId + '/decks');
         }
 
         function updateFailure() {
