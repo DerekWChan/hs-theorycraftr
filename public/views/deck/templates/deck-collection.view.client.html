@@ -1,8 +1,8 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
 <h2>Deck Collection</h2>
-<div>
-  <ul>
-    <li ng-repeat="deck in model.decks">
+<div class="col-xs-4 col-xs-offset-4">
+  <ul class="list-group">
+    <li ng-repeat="deck in model.decks" class="list-group-item">
       <a href="#!/user/{{model.userId}}/deck/{{deck._id}}/details">{{deck.name}}</a>
       <a ng-show="model.currentUser._id === model.userId" href="#!/user/{{model.userId}}/deck/{{deck._id}}/edit">
         <span class="glyphicon glyphicon-pencil"></span>

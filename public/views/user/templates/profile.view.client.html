@@ -1,11 +1,11 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
 <h2>{{model.user.username}}</h2>
-<div class="details col-xs-2 col-xs-offset-5">
+<div class="col-xs-2 col-xs-offset-5"><div class="details">
   <p>{{model.user.role}} since: {{model.user.registrationDate.slice(0, 10)}}</p>
-  <p>Email: {{model.user.email}}</p>
+  <p>Email: {{model.user.email}}</p></div>
   <a href="#!/user/{{model.userId}}/deck/new" class="btn">+ Build Deck</a>
   <a href="#!/user/{{model.userId}}/decks" class="btn">Decks</a>
-</div>
+</div></div>
 <form>
   <div class="container col-xs-4 col-xs-offset-4">
     <form>

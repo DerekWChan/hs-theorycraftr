@@ -11,12 +11,14 @@ ul {
   padding: 0; }
 
 li {
-  list-style-type: none; }
+  list-style-type: none;
+  font-size: 1.25em; }
 
 div {
   text-align: center; }
 
 .btn {
+  font-size: 1.25em;
   margin: 1em 0.25em;
   border-color: none;
   background-color: #5BC0EB;
@@ -28,11 +30,12 @@ div {
     opacity: 0.9; }
 
 table {
-  width: 100%; }
+  width: 100%;
+  font-size: 1.25em; }
 
-td,
-th,
-tr {
+.table td,
+.table th,
+.table tr {
   background-color: #FFF;
   text-align: center;
   padding: 1em; }
@@ -47,7 +50,8 @@ tr {
 
 .home .home_slogan {
   margin: 2em auto;
-  color: #555; }
+  color: #555;
+  font-size: 1.5em; }
 
 .home .home_search {
   margin: 2em auto; }
@@ -64,19 +68,23 @@ tr {
 .editor {
   display: inline-block;
   font-size: 1.5em; }
+  .editor label {
+    padding: 1em 0; }
 
 .catalog {
+  padding: 1em;
   height: 29em;
   overflow-y: scroll;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  border: 1px solid #AAA; }
 
 .available_cards .catalog_card {
   height: 195px; }
 
 .user_deck .catalog_card {
-  width: 30em;
+  width: 100%;
   padding: 0.5em 0;
-  margin: 0.15em 0;
+  margin: 0.15em auto;
   background-color: #555;
   font-size: 10px; }
 

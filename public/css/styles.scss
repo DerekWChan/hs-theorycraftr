@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:300');
-
+@import url( 'https://fonts.googleapis.com/css?family=Nunito:300');
 $color1: #247BA0;
 $color2: #F25F5C;
 $white: #FFF;
 $charcoal: #555;
+$lightcharcoal: #AAA;
 $blue: #5BC0EB;
 $darkblue: #4AB0DA;
 $orange: #FA7921;
@@ -25,6 +25,7 @@ ul {
 
 li {
   list-style-type: none;
+  font-size: 1.25em;
 }
 
 div {
@@ -32,6 +33,7 @@ div {
 }
 
 .btn {
+  font-size: 1.25em;
   margin: 1em 0.25em;
   border-color: none;
   background-color: $blue;
@@ -49,14 +51,17 @@ div {
 
 table {
   width: 100%;
+  font-size: 1.25em;
 }
 
-td,
-th,
-tr {
-  background-color: $white;
-  text-align: center;
-  padding: 1em;
+.table {
+  td,
+  th,
+  tr {
+    background-color: $white;
+    text-align: center;
+    padding: 1em;
+  }
 }
 
 .main_nav {
@@ -74,6 +79,7 @@ tr {
   .home_slogan {
     margin: 2em auto;
     color: $charcoal;
+    font-size: 1.5em;
   }
 
   .home_search {
@@ -96,14 +102,18 @@ tr {
 .editor {
   display: inline-block;
   font-size: 1.5em;
+
+  label {
+    padding: 1em 0;
+  }
 }
 
-.editor_info {}
-
 .catalog {
+  padding: 1em;
   height: 29em;
   overflow-y: scroll;
   overflow-x: hidden;
+  border: 1px solid $lightcharcoal;
 }
 
 .available_cards .catalog_card {
@@ -111,9 +121,9 @@ tr {
 }
 
 .user_deck .catalog_card {
-  width: 30em;
+  width: 100%;
   padding: 0.5em 0;
-  margin: 0.15em 0;
+  margin: 0.15em auto;
   background-color: $charcoal;
   font-size: 10px;
 }
