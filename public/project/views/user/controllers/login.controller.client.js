@@ -3,8 +3,9 @@
     .module('HearthstoneTheorycraftr')
     .controller('loginController', loginController);
 
-  function loginController($location, userService) {
+  function loginController($location, currentUser, userService) {
     var model = this;
+    model.currentUser = currentUser;
     model.login = login;
 
     function login(username, password) {

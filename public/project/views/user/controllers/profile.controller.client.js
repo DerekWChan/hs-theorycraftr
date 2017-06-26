@@ -3,8 +3,9 @@
     .module('HearthstoneTheorycraftr')
     .controller('profileController', profileController);
 
-  function profileController($location, $routeParams, $route, userService) {
+  function profileController($location, $routeParams, $route, currentUser, userService) {
     var model = this;
+    model.currentUser = currentUser;
     model.userId = $routeParams.userId;
     model.updateProfile = updateProfile;
     model.deleteUser = deleteUser;

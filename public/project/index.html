@@ -10,8 +10,6 @@
   <!-- Routes -->
   <script src="app.js"></script>
   <script src="config.js"></script>
-  <!-- Header -->
-  <script src="views/common/controllers/header.controller.client.js"></script>
   <!-- Home -->
   <script src="views/home/controllers/home.controller.client.js"></script>
   <!-- Search -->
@@ -20,6 +18,7 @@
   <script src="views/user/controllers/login.controller.client.js"></script>
   <script src="views/user/controllers/profile.controller.client.js"></script>
   <script src="views/user/controllers/register.controller.client.js"></script>
+  <script src="views/user/controllers/user-details.controller.client.js"></script>
   <script src="services/user.service.client.js"></script>
   <!-- Deck -->
   <script src="views/deck/controllers/deck-collection.controller.client.js"></script>
@@ -34,7 +33,6 @@
 </head>
 
 <body>
-  <div ng-include="'views/common/templates/header.view.client.html'"></div>
   <div ng-view></div>
 </body>
 

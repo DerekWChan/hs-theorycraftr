@@ -5,7 +5,7 @@
 
   function configuration($routeProvider) {
     $routeProvider
-      .when("/home", {
+      .when("/", {
         templateUrl: "views/home/templates/home.view.client.html",
         controller: "homeController",
         controllerAs: "model",
@@ -53,7 +53,7 @@
           currentUser: checkCurrentUser
         }
       })
-      .when("/profile", {
+      .when("/profile/:userId", {
         templateUrl: "views/user/templates/profile.view.client.html",
         controller: "profileController",
         controllerAs: "model",
@@ -117,20 +117,20 @@
       return deferred.promise;
     }
 
-    // function checkGuestOnly($q, $location, userService) {
-    //   var deferred = $q.defer();
-    //
-    //   userService.isLoggedin()
-    //     .then(function(currentUser) {
-    //       if (currentUser === '0') {
-    //         deferred.resolve({});
-    //       } else {
-    //         deferred.resolve(currentUser);
-    //         $location.url('/profile/' + user._id);
-    //       }
-    //     });
-    //   return deferred.promise;
-    // }
+    function checkGuestOnly($q, $location, userService) {
+      var deferred = $q.defer();
+
+      userService.isLoggedin()
+        .then(function(currentUser) {
+          if (currentUser === '0') {
+            deferred.resolve({});
+          } else {
+            deferred.resolve(currentUser);
+            $location.url('/profile/' + user._id);
+          }
+        });
+      return deferred.promise;
+    }
 
     // Logged in users; members and admins
     function checkLoggedIn($q, $location, userService) {

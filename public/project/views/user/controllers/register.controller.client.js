@@ -3,8 +3,9 @@
     .module('HearthstoneTheorycraftr')
     .controller('registerController', registerController);
 
-  function registerController($location, userService) {
+  function registerController($location, currentUser, userService) {
     var model = this;
+    model.currentUser = currentUser;
     model.register = register;
 
     function register(username, password, confirmPassword) {

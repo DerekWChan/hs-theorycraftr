@@ -3,8 +3,9 @@
     .module('HearthstoneTheorycraftr')
     .controller('deckEditorController', deckEditorController);
 
-  function deckEditorController($location, $routeParams, $route, deckService) {
+  function deckEditorController($location, $routeParams, $route, currentUser, deckService) {
     var model = this;
+    model.currentUser = currentUser;
     model.userId = $routeParams.userId;
     model.deckId = $routeParams.deckId;
     model.updateDeck = updateDeck;

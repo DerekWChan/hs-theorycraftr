@@ -1,5 +1,5 @@
 <nav>
-  <a href="#!/home">
+  <a href="#!/">
     <h1>
       Hearthstone
       <img width="50px" height="50px" src="https://www.spreadshirt.com/image-server/v1/designs/1004981592,width=178,height=178/hearthstone-logo.png">
@@ -8,5 +8,5 @@
   </a>
   <a ng-show="!showLogin" href="#!/login" class="btn btn-success">Login</a>
   <a ng-show="!showRegister" href="#!/register" class="btn btn-primary">Register</a>
-  <a ng-show="!showProfile" href="#!/profile" class="btn btn-danger">Profile</a>
+  <a ng-show="!showProfile" href="#!/profile/{{model.currentUser._id}}" class="btn btn-danger">Profile</a>
 </nav>

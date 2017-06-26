@@ -3,8 +3,9 @@
     .module('HearthstoneTheorycraftr')
     .controller('searchController', searchController);
 
-  function searchController($route, deckService) {
+  function searchController($route, currentUser, deckService) {
     var model = this;
+    model.currentUser = currentUser;
     model.searchDecks = searchDecks;
 
     function searchDecks(searchTerms) {

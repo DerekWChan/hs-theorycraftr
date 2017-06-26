@@ -3,8 +3,9 @@
     .module('HearthstoneTheorycraftr')
     .controller('homeController', homeController);
 
-  function homeController(deckService) {
+  function homeController(currentUser, deckService) {
     var model = this;
+    model.currentUser = currentUser;
     model.searchDecks = searchDecks;
 
     function init() {
