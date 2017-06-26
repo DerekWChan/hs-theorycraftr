@@ -83,7 +83,8 @@ function localStrategy(username, password, done) {
     .then(function(user) {
       if (user) {
         if (bcrypt.compareSync(password, user.password)) {
-          return userModel.findUserByCredentials(username, user.password)
+          return userModel
+            .findUserByCredentials(username, user.password)
             .then(function(user) {
               if (user) {
                 return done(null, user);

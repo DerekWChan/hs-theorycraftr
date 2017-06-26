@@ -3,8 +3,9 @@
     .module('HearthstoneTheorycraftr')
     .controller('userDetailsController', userDetailsController);
 
-  function userDetailsController($routeParams, userService) {
+  function userDetailsController($routeParams, currentUser, userService) {
     var model = this;
+    model.currentUser = currentUser;
     model.userId = $routeParams.userId;
 
     function init() {

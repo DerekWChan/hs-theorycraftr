@@ -34,7 +34,7 @@
         controller: "loginController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkLoggedIn
+          currentUser: checkCurrentUser
         }
       })
       .when("/register", {
@@ -42,7 +42,7 @@
         controller: "registerController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkLoggedIn
+          currentUser: checkCurrentUser
         }
       })
       .when("/search", {
@@ -58,7 +58,7 @@
         controller: "profileController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkLoggedIn
+          currentUser: checkCurrentUser
         }
       })
       .when("/user/:userId", {
@@ -112,21 +112,6 @@
             deferred.resolve({});
           } else {
             deferred.resolve(currentUser);
-          }
-        });
-      return deferred.promise;
-    }
-
-    function checkGuestOnly($q, $location, userService) {
-      var deferred = $q.defer();
-
-      userService.isLoggedin()
-        .then(function(currentUser) {
-          if (currentUser === '0') {
-            deferred.resolve({});
-          } else {
-            deferred.resolve(currentUser);
-            $location.url('/profile/' + user._id);
           }
         });
       return deferred.promise;
