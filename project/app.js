@@ -9,7 +9,7 @@ if (process.env.MLAB_USERNAME) {
 }
 
 mongoose.Promise = require('q').Promise;
-mongoose.connect('connectionString');
+mongoose.connect(connectionString);
 
 require('./services/user.service.server.js');
 require('./services/deck.service.server.js');
