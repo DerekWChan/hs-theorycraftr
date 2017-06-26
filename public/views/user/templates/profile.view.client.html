@@ -1,18 +1,32 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
 <h2>{{model.user.username}}</h2>
-<p>{{model.user.roles}}</p>
+<p>{{model.user.role}}</p>
 <p>Registered on: {{model.user.registrationDate}}</p>
 <p>Email: {{model.user.email}}</p>
 <a href="#!/user/{{model.userId}}/deck/new" class="btn btn-primary">+ Build Deck</a>
 <a href="#!/user/{{model.userId}}/decks" class="btn btn-primary">Decks</a>
 <form>
   <div class="container">
-    <div><label>Username</label>
-    <input required ng-model="newInfo.username" type="text" placeholder="{{model.user.username}}"></input></div>
-    <div><label>Email</label>
-    <input required ng-model="newInfo.email" type="text" placeholder="{{model.user.email}}"></input></div>
+    <form>
+      <p>
+        <label>Username</label>
+        <input ng-model="newInfo.username" type="text" placeholder="{{model.user.username}}"></input>
+      </p>
+      <p>
+        <label>First Name</label>
+        <input ng-model="newInfo.firstName" type="text" placeholder="{{model.user.firstName}}"></input>
+      </p>
+      <p>
+        <label>Last Name</label>
+        <input ng-model="newInfo.lastName" type="text" placeholder="{{model.user.lastName}}"></input>
+      </p>
+      <p>
+        <label>Email</label>
+        <input ng-model="newInfo.email" type="text" placeholder="{{model.user.email}}"></input>
+      </p>
+    </form>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.updateProfile(newInfo)" class="btn btn-success">Update Profile</a>
+    <a ng-click="model.updateUser(newInfo)" class="btn btn-success">Update Profile</a>
     <a ng-click="model.logout()" class="btn btn-primary">Logout</a>
     <a ng-click="model.deleteUser()" class="btn btn-danger">Delete Profile</a>
   </div>

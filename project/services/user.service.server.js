@@ -8,7 +8,6 @@ passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-app.post('/api/user', createUser);
 app.post('/api/register', register);
 app.post('/api/login', passport.authenticate('local'), login);
 app.post('/api/logout', logout);
@@ -17,15 +16,6 @@ app.get('/api/user/:userId', findUserById);
 app.get('/api/user', findAllUsers);
 app.put('/api/user/:userId', updateUser);
 app.delete('/api/user/:userId', deleteUser);
-
-function createUser(req, res) {
-  var newUser = req.body;
-
-  userModel.createUser(newUser)
-    .then(function(newUser) {
-      res.json(newUser);
-    });
-}
 
 function register(req, res) {
   var newUser = req.body;

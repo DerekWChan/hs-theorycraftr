@@ -13,7 +13,7 @@ userModel.findUserByUsername = findUserByUsername;
 module.exports = userModel;
 
 function createUser(newUser) {
-  newUser.roles = 'MEMBER';
+  newUser.role = 'MEMBER';
   return userModel.create(newUser);
 }
 

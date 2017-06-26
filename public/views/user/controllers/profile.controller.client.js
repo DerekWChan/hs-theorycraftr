@@ -7,7 +7,7 @@
     var model = this;
     model.currentUser = currentUser;
     model.userId = $routeParams.userId;
-    model.updateProfile = updateProfile;
+    model.updateUser = updateUser;
     model.deleteUser = deleteUser;
     model.logout = logout;
 
@@ -25,7 +25,7 @@
     }
     init();
 
-    function updateProfile(newInfo) {
+    function updateUser(newInfo) {
       if (model.user !== null) {
         userService.updateUser(model.userId, newInfo)
           .then(updateSuccess, updateFailure);
