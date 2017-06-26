@@ -1,0 +1,134 @@
+$color1: #247BA0;
+$color2: #F25F5C;
+$white: #FFF;
+$charcoal: #555;
+$blue: #5BC0EB;
+$orange: #FA7921;
+$font: "Calibri";
+
+body {
+  background-color: $white;
+  font: $font;
+}
+
+.form-control {
+  width: 30em;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+div {
+  text-align: center;
+}
+
+.btn {
+  margin: 1em 0.25em;
+  border-color: none;
+  background-color: $blue;
+  color: $white;
+
+  &.catalog_card {
+    background-color: initial;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+td,
+th,
+tr {
+  background-color: $white;
+  text-align: center;
+  padding: 1em;
+}
+
+.main_nav {
+  padding: 3em;
+  background-color:  $charcoal;
+    color: $white;
+
+  a {
+    text-decoration: none;
+    color: $white;
+  }
+}
+
+.home {
+  .home_slogan {
+    margin: 2em auto;
+    color: $charcoal;
+  }
+
+  .home_search {
+    margin: 2em auto;
+  }
+
+  .home_decks {
+    margin: 2em auto;
+  }
+}
+
+.editor {
+  display: inline-block;
+  font-size: 1.5em;
+}
+
+.editor_info {}
+
+.catalog {
+  height: 5em;
+  height: 31em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.available_cards .catalog_card {
+  height: 195px;
+}
+
+.user_deck .catalog_card {
+  width: 30em;
+  padding: 0.5em 0;
+  margin: 0.15em 0;
+  background-color: $charcoal;
+  font-size: 10px;
+}
+
+.catalog_card {
+  margin: 0;
+  padding: 0;
+  width: 140px;
+}
+
+.catalog_card:hover {
+  opacity: 0.8;
+}
+
+.catalog_card img {
+  width: 150px;
+}
+
+.catalog_card a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.card_mana-cost {
+  background-color: $blue;
+  float: left;
+  margin: 0 1em;
+  border-radius: 2em;
+  padding: 0.5em 1em;
+}
+
+.card_name {
+    font-size: 1.5em;
+}
