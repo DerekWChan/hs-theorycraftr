@@ -8,8 +8,8 @@ if (process.env.MLAB_USERNAME) {
   connectionString += '@ds139362.mlab.com:39362/heroku_nzzfqv1s';
 }
 
-mongoose.Promise = require('q').Promise;
 mongoose.connect(connectionString);
+mongoose.Promise = require('q').Promise;
 
 require('./services/user.service.server.js');
 require('./services/deck.service.server.js');

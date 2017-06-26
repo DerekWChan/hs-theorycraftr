@@ -13,11 +13,17 @@ userModel.findUserByUsername = findUserByUsername;
 module.exports = userModel;
 
 function createUser(newUser) {
-  newUser.role = 'MEMBER';
+  newUser.roles = 'MEMBER';
   return userModel.create(newUser);
 }
 
 function updateUser(userId, newInfo) {
+  delete user.username;
+  delete user.password;
+
+  if (typeof user.roles === 'string') {
+    user.roles = user.roles.split(',');
+  }
   return userModel.update({
     _id: userId
   }, {

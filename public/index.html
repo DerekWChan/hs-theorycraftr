@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="HearthstoneTheorycraftr">
 
 <head>
   <meta charset="UTF-8">
-  <title>Theorycraftr</title>
+  <!-- JavaScript -->
+  <script src="../vendors/jquery/jquery.min.js"></script>
+  <script src="../vendors/angular/angular.min.js"></script>
+  <script src="../vendors/angular-route/angular-route.min.js"></script>
+  <!-- Routes -->
+  <script src="app.js"></script>
+  <script src="config.js"></script>
+  <!-- Home -->
+  <script src="views/home/controllers/home.controller.client.js"></script>
+  <!-- Search -->
+  <script src="views/search/controllers/search.controller.client.js"></script>
+  <!-- User -->
+  <script src="views/user/controllers/login.controller.client.js"></script>
+  <script src="views/user/controllers/profile.controller.client.js"></script>
+  <script src="views/user/controllers/register.controller.client.js"></script>
+  <script src="views/user/controllers/user-details.controller.client.js"></script>
+  <script src="services/user.service.client.js"></script>
+  <!-- Deck -->
+  <script src="views/deck/controllers/deck-collection.controller.client.js"></script>
+  <script src="views/deck/controllers/deck-creator.controller.client.js"></script>
+  <script src="views/deck/controllers/deck-editor.controller.client.js"></script>
+  <script src="views/deck/controllers/deck-details.controller.client.js"></script>
+  <script src="services/deck.service.client.js"></script>
+  <!-- CSS -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet" />
+  <title>Project Home Page</title>
 </head>
 
 <body>
-  <ul>
-    <li>
-      <a href="project/index.html">
-        <img src="https://www.spreadshirt.com/image-server/v1/designs/1004981592,width=178,height=178/hearthstone-logo.png">
-        <h1>Hearthstone Theorycraftr</h1>
-      </a>
-    </li>
-  </ul>
+  <div ng-view></div>
 </body>
 
 </html>
