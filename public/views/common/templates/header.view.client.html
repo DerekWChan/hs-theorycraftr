@@ -6,6 +6,7 @@
       Theorycraftr
    </h1>
   </a>
+  <a onclick="window.history.back();" class="btn btn-primary">Back</a>
   <a ng-hide="model.currentUser._id" href="#!/login" class="btn btn-success">Login</a>
   <a ng-hide="model.currentUser._id" href="#!/register" class="btn btn-primary">Register</a>
   <a ng-show="model.currentUser._id" href="#!/profile/{{model.currentUser._id}}" class="btn btn-primary">Profile</a>
