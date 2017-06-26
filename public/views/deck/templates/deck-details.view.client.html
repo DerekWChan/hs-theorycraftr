@@ -3,7 +3,7 @@
 <a ng-click="model.upvoteDeck()" class="glyphicon glyphicon-upload"></a>
 <div>{{model.deck.upvotes}}</div>
 <div>Created by: <a href="#!/user/{{model.deck._user}}">{{model.deck._user}}</a></div>
-<div>Created on: {{model.deck.createdOn}}</div>
+<div>Created on: {{model.deck.createdOn.slice(0, 10)}}</div>
 <div>{{model.deck.format}}</div>
 <div>{{model.deck.playerClass}}</div>
 <div>{{model.deck.description}}</div>
@@ -22,7 +22,7 @@
       <li ng-repeat="comment in model.deck._comments">
         <a href="">{{comment._user.username}}</a>
         <p>{{comment.text}}</p>
-        <p>{{comment.createdOn}}</p>
+        <p>{{comment.createdOn.slice(0, 10)}}</p>
       </li>
     </div>
   </ul>

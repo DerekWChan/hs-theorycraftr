@@ -6,6 +6,7 @@ var deckSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'UserModel'
   },
+  creatorName: String,
   name: String,
   createdOn: {
     type: Date,

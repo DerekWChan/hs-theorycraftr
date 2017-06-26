@@ -13,8 +13,8 @@
     </tr>
     <tr ng-repeat="deck in model.allDecks">
       <td><a href="#!/user/{{deck._user}}/deck/{{deck._id}}/details">{{deck.name}}</a></td>
-      <td><a href="#!/user/{{deck._user}}">{{deck._user}}</a></td>
-      <td>{{deck.createdOn}}</td>
+      <td><a href="#!/user/{{deck._user}}">{{deck.creatorName}}</a></td>
+      <td>{{deck.createdOn.slice(0, 10)}}</td>
       <td>{{deck.format}}</td>
       <td>{{deck.playerClass}}</td>
     </tr>
