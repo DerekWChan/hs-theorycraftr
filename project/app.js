@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var connectionString = 'mongodb://127.0.0.1:27017/hs-theorycraftr';
 
-if (process.env.MLAB_USERNAME_WEBDEV) {
-  var username = process.env.MLAB_USERNAME_HS-THEORYCRAFTR;
-  var password = process.env.MLAB_PASSWORD_HS-THEORYCRAFTR;
+if (process.env.MLAB_USERNAME) {
+  var username = process.env.MLAB_USERNAME;
+  var password = process.env.MLAB_PASSWORD;
   connectionString = 'mongodb://' + username + ':' + password;
   connectionString += '@ds139362.mlab.com:39362/heroku_nzzfqv1s';
 }
