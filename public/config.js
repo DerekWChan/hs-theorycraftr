@@ -18,7 +18,7 @@
         controller: "adminController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkCurrentUser
+          currentUser: checkAdmin
         }
       })
       .when("/admin/users", {
@@ -34,7 +34,7 @@
         controller: "loginController",
         controllerAs: "model",
         resolve: {
-          currentUser: checkAdmin
+          currentUser: checkCurrentUser
         }
       })
       .when("/register", {
