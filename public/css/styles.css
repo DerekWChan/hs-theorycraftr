@@ -3,6 +3,9 @@ body {
   background-color: #FFF;
   font-family: "Nunito", sans-serif; }
 
+a {
+  text-decoration: none !important; }
+
 .form-control {
   width: 31em;
   margin: 0 auto; }
@@ -28,24 +31,28 @@ div {
   .btn:hover {
     color: #FFF;
     opacity: 0.9; }
+  .btn.btn--icon {
+    margin: 0;
+    font-size: 0.75em; }
 
 table {
   width: 100%;
   font-size: 1.25em; }
 
-.table td,
-.table th,
-.table tr {
-  background-color: #FFF;
-  text-align: center;
+.table {
   padding: 1em; }
+  .table td,
+  .table th,
+  .table tr {
+    background-color: #FFF;
+    text-align: center;
+    padding: 1em; }
 
 .main_nav {
   padding: 3em;
   background-color: #555;
   color: #FFF; }
   .main_nav a {
-    text-decoration: none;
     color: #FFF; }
 
 .home .home_slogan {

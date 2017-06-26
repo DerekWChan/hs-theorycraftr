@@ -1,11 +1,11 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
-<h2>{{model.deck.name}}</h2>
-<p>
-  <a ng-click="model.upvoteDeck()" class="glyphicon glyphicon-upload"></a>
-</p>
 <div class="details">
   <div class="col-xs-2 col-xs-offset-5">
-    <div>{{model.deck.upvotes}}</div>
+    <h2>{{model.deck.name}}</h2>
+    <p>
+      <a ng-click="model.upvoteDeck()" class="btn btn--icon fa fa-arrow-up"></a>
+    </p>
+    <div>· {{model.deck.upvotes}} ·</div>
     <div>{{model.deck.format}}</div>
     <div>{{model.deck.playerClass}}</div>
     <div>Created by: <a href="#!/user/{{model.deck._user}}">{{model.deck.creatorName}}</a></div>
@@ -13,7 +13,7 @@
     <div>{{model.deck.description}}</div>
   </div>
 </div>
-<div class="col-xs-8">
+<div class="col-xs-6 col-xs-offset-2">
   <ul class="catalog available_cards">
     <li class="btn catalog_card" ng-repeat="card in model.deck._cards">
       <div>

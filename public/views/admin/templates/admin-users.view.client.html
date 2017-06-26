@@ -2,23 +2,23 @@
 <a ng-click="createForm = !createForm" class="btn">+ Create User</a>
 <form ng-show="createForm">
   <div>
-    <p><label>Username</label>
-      <input ng-model="newUser.username"></input>
+    <p class="form-group"><label>Username</label>
+      <input ng-model="newUser.username" class="form-control"></input>
     </p>
-    <p><label>Password</label>
-      <input ng-model="newUser.password"></input>
+    <p class="form-group"><label>Password</label>
+      <input ng-model="newUser.password" class="form-control"></input>
     </p>
-    <p><label>First Name</label>
-      <input ng-model="newUser.firstName"></input>
+    <p class="form-group"><label>First Name</label>
+      <input ng-model="newUser.firstName" class="form-control"></input>
     </p>
-    <p><label>Last Name</label>
-      <input ng-model="newUser.lastName"></input>
+    <p class="form-group"><label>Last Name</label>
+      <input ng-model="newUser.lastName" class="form-control"></input>
     </p>
-    <p><label>E-mail</label>
-      <input ng-model="newUser.email"></input>
+    <p class="form-group"><label>E-mail</label>
+      <input ng-model="newUser.email" class="form-control"></input>
     </p>
-    <p><label>Role</label>
-      <input ng-model="newUser.role"></input>
+    <p class="form-group"><label>Role</label>
+      <input ng-model="newUser.role" class="form-control"></input>
     </p>
   </div>
   <a ng-click="model.createUser(newUser)" class="btn">Save User</a>
