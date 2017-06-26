@@ -28,6 +28,8 @@
 
     function addCommentToDeck(newComment) {
       if (newComment !== undefined) {
+        newComment.creatorId = currentUser._id;
+        newComment.creatorName = currentUser.username;
         deckService.addCommentToDeck(newComment, model.deckId)
           .then(function(response) {
             $route.reload();

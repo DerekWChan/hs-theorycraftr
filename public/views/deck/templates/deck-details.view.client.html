@@ -14,6 +14,7 @@
   </div>
 </div>
 <div class="col-xs-6 col-xs-offset-2">
+  <h2>Cards</h2>
   <ul class="catalog available_cards">
     <li class="btn catalog_card" ng-repeat="card in model.deck._cards">
       <div>
@@ -23,10 +24,10 @@
 </div>
 <div class="col-xs-4">
   <h2>Comments</h2>
-  <ul>
+  <ul class="list-group">
     <div>
-      <li ng-repeat="comment in model.deck._comments">
-        <a href="">{{comment._user.username}}</a>
+      <li ng-repeat="comment in model.deck._comments" class="list-group-item">
+        <a href="#!/user/{{comment.creatorId}}">{{comment.creatorName}}</a>
         <p>{{comment.text}}</p>
         <p>{{comment.createdOn.slice(0, 10)}}</p>
       </li>
