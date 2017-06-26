@@ -9,6 +9,8 @@ userModel.findAllUsers = findAllUsers;
 userModel.findUserById = findUserById;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
+userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.findUserByFacebookId = findUserByFacebookId;
 
 module.exports = userModel;
 
@@ -49,5 +51,17 @@ function findUserByCredentials(username, password) {
 function findUserByUsername(username) {
   return userModel.findOne({
     username: username
+  });
+}
+
+function findUserByGoogleId(googleId) {
+  return userModel.findOne({
+    'google.id': googleId
+  });
+}
+
+function findUserByFacebookId(facebookId) {
+  return userModel.findOne({
+    'facebook.id': facebookId
   });
 }
