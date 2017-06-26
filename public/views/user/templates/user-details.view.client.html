@@ -1,4 +1,4 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
 <h2>{{model.user.username}}</h2>
-<p>Registered on: {{model.user.registrationDate}}</p>
+<p>Registered on: {{model.user.registrationDate.slice(0, 10)}}</p>
 <a href="#!/user/{{model.userId}}/decks" class="btn btn-primary">Decks</a>
