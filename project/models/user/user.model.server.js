@@ -15,7 +15,7 @@ userModel.findUserByFacebookId = findUserByFacebookId;
 module.exports = userModel;
 
 function createUser(newUser) {
-  newUser.role = 'MEMBER';
+  newUser.role = 'Member';
   return userModel.create(newUser);
 }
 

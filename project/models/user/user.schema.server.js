@@ -7,8 +7,8 @@ var userSchema = mongoose.Schema({
   password: String,
   role: {
     type: String,
-    default: 'GUEST',
-    enum: ['GUEST', 'MEMBER', 'ADMIN']
+    default: 'Guest',
+    enum: ['Guest', 'Member', 'Admin']
   },
   registrationDate: {
     type: Date,
