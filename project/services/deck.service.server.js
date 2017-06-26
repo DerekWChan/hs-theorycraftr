@@ -113,6 +113,7 @@ function removeCardFromDeck(req, res) {
 function addCommentToDeck(req, res) {
   var deckId = req.params.deckId;
   var newComment = req.body;
+  console.log(newComment);
 
   deckModel.addCommentToDeck(newComment, deckId)
     .then(function() {

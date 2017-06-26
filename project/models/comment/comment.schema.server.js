@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
 var commentSchema = mongoose.Schema({
-  // _user: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'UserModel'
-  // },
+  creatorId: String,
+  creatorName: String,
   createdOn: {
     type: Date,
     default: Date.now
