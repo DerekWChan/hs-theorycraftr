@@ -5,7 +5,7 @@ var userSchema = mongoose.Schema({
     unique: true
   },
   password: String,
-  roles: {
+  role: {
     type: String,
     default: 'GUEST',
     enum: ['GUEST', 'MEMBER', 'ADMIN']

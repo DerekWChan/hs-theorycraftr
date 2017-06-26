@@ -1,0 +1,60 @@
+<div ng-include="'views/common/templates/header.view.client.html'"></div>
+<a ng-click="createForm = !createForm" class="btn btn-primary">+ Create User</a>
+<form ng-show="createForm">
+  <div>
+    <p><label>Username</label>
+      <input ng-model="newUser.username"></input>
+    </p>
+    <p><label>Password</label>
+      <input ng-model="newUser.password"></input>
+    </p>
+    <p><label>First Name</label>
+      <input ng-model="newUser.firstName"></input>
+    </p>
+    <p><label>Last Name</label>
+      <input ng-model="newUser.lastName"></input>
+    </p>
+    <p><label>E-mail</label>
+      <input ng-model="newUser.email"></input>
+    </p>
+    <p><label>Role</label>
+      <input ng-model="newUser.role"></input>
+    </p>
+  </div>
+  <a ng-click="model.createUser(newUser)" class="btn btn-primary">Save User</a>
+</form>
+<table>
+  <tr>
+    <th>Username</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>E-mail</th>
+    <th>Role</th>
+  </tr>
+  <tr ng-repeat="user in model.allUsers">
+    <td>
+      <p><a href="#!/user/{{user._id}}">{{user.username}}</a></p>
+      <input ng-model="newInfo.username"></input>
+    </td>
+    <td>
+      <p>{{user.firstName}}</p>
+      <input ng-model="newInfo.firstName"></input>
+    </td>
+    <td>
+      <p>{{user.lastName}}</p>
+      <input ng-model="newInfo.lastName"></input>
+    </td>
+    <td>
+      <p>{{user.email}}</p>
+      <input ng-model="newInfo.email"></input>
+    </td>
+    <td>
+      <p>{{user.role}}</p>
+      <input ng-model="newInfo.role"></input>
+    </td>
+    <td>
+      <a ng-click="model.updateUser(user._id, newInfo)" class="btn btn-success">Update</a>
+      <a ng-click="model.deleteUser(user._id)" class="btn btn-danger">Delete</a>
+    </td>
+  </tr>
+</table>

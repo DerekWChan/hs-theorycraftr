@@ -25,9 +25,6 @@
         return;
       }
 
-      // var currentUserRole
-      // if(model.currentUser.roles.indexOf('MEMBER') !== -1 ||)
-
       var newDeck = {
         _user: model.userId,
         name: name,
