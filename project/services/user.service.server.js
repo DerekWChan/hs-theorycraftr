@@ -44,6 +44,7 @@ app.get('/auth/facebook/callback',
   })
 );
 app.get('/api/loggedin', isLoggedIn);
+app.get('/api/checkAdmin', checkAdmin);
 app.get('/api/user/:userId', findUserById);
 app.get('/api/user', findAllUsers);
 app.put('/api/user/:userId', updateUser);
@@ -75,6 +76,16 @@ function login(req, res) {
 function isLoggedIn(req, res) {
   if (req.isAuthenticated()) {
     res.json(req.user);
+  } else {
+    res.send('0');
+  }
+}
+
+function checkAdmin(req, res) {
+  var user = req.user;
+
+  if (req.isAuthenticated() && req.user.role === 'Administrator') {
+    res.json(user);
   } else {
     res.send('0');
   }

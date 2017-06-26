@@ -8,6 +8,7 @@
       register: register,
       login: login,
       isLoggedIn: isLoggedIn,
+      checkAdmin: checkAdmin,
       logout: logout,
       updateUser: updateUser,
       deleteUser: deleteUser,
@@ -41,6 +42,14 @@
 
     function isLoggedIn() {
       var url = '/api/loggedin';
+      return $http.get(url)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function checkAdmin() {
+      var url = "/api/checkAdmin";
       return $http.get(url)
         .then(function(response) {
           return response.data;
