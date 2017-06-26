@@ -7,8 +7,8 @@
     var model = this;
     model.userId = $routeParams.userId;
     model.deckId = $routeParams.deckId;
-    model.upvoteDeck = upvoteDeck;
     model.addCommentToDeck = addCommentToDeck;
+    model.upvoteDeck = upvoteDeck;
 
     function init() {
       // Initialize model.deck
@@ -25,12 +25,6 @@
     }
     init();
 
-    function upvoteDeck() {
-      deckService.upvoteDeck(model.deckId)
-        .then(function(response) {
-          $route.reload();
-        })
-    }
 
     function addCommentToDeck(newComment) {
       if (newComment !== undefined) {
@@ -39,6 +33,13 @@
             $route.reload();
           });
       }
+    }
+
+    function upvoteDeck() {
+      deckService.upvoteDeck(model.deckId)
+        .then(function(response) {
+          $route.reload();
+        })
     }
   }
 })();

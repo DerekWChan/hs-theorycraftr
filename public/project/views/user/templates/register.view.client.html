@@ -12,6 +12,6 @@
       <input required ng-model="confirmPassword" type="password" placeholder="Confirm Password"></input>
     </div>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.registerUser(username, password, confirmPassword)" class="btn btn-primary">Register</a>
+    <a ng-click="model.register(username, password, confirmPassword)" class="btn btn-primary">Register</a>
   </div>
 </form>

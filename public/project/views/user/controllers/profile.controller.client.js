@@ -8,6 +8,7 @@
     model.userId = $routeParams.userId;
     model.updateProfile = updateProfile;
     model.deleteUser = deleteUser;
+    model.logout = logout;
 
     function init() {
       userService.findUserById(model.userId)
@@ -49,6 +50,13 @@
       function deleteFailure() {
         model.message = "Unable to delete profile.";
       }
+    }
+
+    function logout() {
+      userService.logout()
+        .then(function(response) {
+          $location.url('/home');
+        });
     }
   }
 })();

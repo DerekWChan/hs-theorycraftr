@@ -7,7 +7,7 @@
     var model = this;
     model.login = login;
 
-    function login(username, password) {
+    function login(user) {
       if (username === '' || typeof username === 'undefined' || username === null) {
         model.message = "Please type in a username.";
         return;
@@ -18,11 +18,10 @@
         return;
       }
 
-      userService.findUserByCredentials(username, password)
+      userService.login(user)
         .then(userFound, userNotFound);
 
       function userFound(response) {
-        if(response !== null) {
           $location.url("/user/" + response._id);
         }
       }

@@ -1,7 +1,17 @@
 var app = require('../../express');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var userModel = require('../models/user/user.model.server.js');
 
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
+passport.use(new LocalStrategy(localStrategy));
+
 app.post('/api/user', createUser);
+app.post('/api/register', register);
+app.post('/api/login', passport.authenticate('local'), login);
+app.post('/api/logout', logout);
+app.get('/api/assignment/checkLoggedIn', checkLoggedIn);
 app.get('/api/user/:userId', findUserById);
 app.get('/api/user', findAllUsers);
 app.put('/api/user/:userId', updateUser);
@@ -14,6 +24,74 @@ function createUser(req, res) {
     .then(function(newUser) {
       res.json(newUser);
     });
+}
+
+function register(req, res) {
+  var user = req.body;
+  userModel.createUser(user)
+    .then(function(user) {
+      if (user) {
+        req.login(user, function(err) {
+          if (err) {
+            res.status(400).send(err);
+          } else {
+            res.json(user);
+          }
+        });
+      }
+    });
+}
+
+function login(req, res) {
+  var user = req.user;
+
+  res.json(user);
+}
+
+function logout(req, res) {
+  req.logOut();
+  res.send(200);
+}
+
+function serializeUser(user, done) {
+  done(null, user);
+}
+
+function deserializeUser(user, done) {
+  userModel.findUserById(user._id)
+    .then(
+      function(user) {
+        done(null, user);
+      },
+      function(err) {
+        done(err, null);
+      });
+}
+
+function localStrategy(username, password, done) {
+  userModel.findUserByCredentials(username, password)
+    .then(
+      function(user) {
+        if (user.username === username && user.password === password) {
+          return done(null, user);
+        } else {
+          return done(null, false);
+        }
+      },
+      function(err) {
+        if (err) {
+          return done(err);
+        }
+      }
+    );
+}
+
+function checkLoggedIn(req, res) {
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.send('0');
+  }
 }
 
 function updateUser(req, res) {
@@ -59,10 +137,10 @@ function findAllUsers(req, res) {
             res.sendStatus(404);
           }
         });
-      }
-    // findUserByUsername
-    else if (username) {
-      userModel.findUserByUsername(username)
+  }
+  // findUserByUsername
+  else if (username) {
+    userModel.findUserByUsername(username)
       .then(
         function(user) {
           if (user) {
@@ -71,10 +149,10 @@ function findAllUsers(req, res) {
             res.sendStatus(404);
           }
         });
-    } else {
-      userModel.findAllUsers()
-        .then(function(users) {
-          res.json(users);
-        });
-    }
+  } else {
+    userModel.findAllUsers()
+      .then(function(users) {
+        res.json(users);
+      });
   }
+}

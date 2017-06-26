@@ -6,6 +6,9 @@
   function userService($http) {
     var api = {
       createUser: createUser,
+      register: register,
+      login: login,
+      logout: logout,
       updateUser: updateUser,
       deleteUser: deleteUser,
       findAllUsers: findAllUsers,
@@ -19,6 +22,29 @@
       var url = '/api/user';
 
       return $http.post(url, newUser)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function register(user) {
+      var url = '/api/register';
+      return $http.post(url, user);
+    }
+
+    function login(user) {
+      var url = '/api/login';
+
+      return $http.post(url, user)
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function logout(user) {
+      var url = '/api/logout';
+
+      return $http.post(url)
         .then(function(response) {
           return response.data;
         });

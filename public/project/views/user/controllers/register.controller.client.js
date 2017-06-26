@@ -7,7 +7,7 @@
     var model = this;
     model.registerUser = registerUser;
 
-    function registerUser(username, password, confirmPassword) {
+    function register(username, password, confirmPassword) {
       if (username === '' || typeof username === 'undefined' || username === null) {
         model.message = "Please type in a username.";
         return;
@@ -36,7 +36,7 @@
           password: password
         };
 
-        return userService.createUser(newUser)
+        return userService.register(user)
           .then(function(response) {
             $location.url('/user/' + response._id);
           });

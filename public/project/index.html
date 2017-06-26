@@ -10,6 +10,8 @@
   <!-- Routes -->
   <script src="app.js"></script>
   <script src="config.js"></script>
+  <!-- Header -->
+  <script src="views/common/controllers/header.controller.client.js"></script>
   <!-- Home -->
   <script src="views/home/controllers/home.controller.client.js"></script>
   <!-- Search -->
@@ -32,7 +34,7 @@
 </head>
 
 <body>
-  <div ng-include="'views/common/header.view.client.html'"></div>
+  <div ng-include="'views/common/templates/header.view.client.html'"></div>
   <div ng-view></div>
 </body>
 
