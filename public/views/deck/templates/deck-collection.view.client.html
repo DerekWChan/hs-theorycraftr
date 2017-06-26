@@ -5,7 +5,7 @@
     <tr ng-repeat="deck in model.decks">
       <td><a href="#!/user/{{model.userId}}/deck/{{deck._id}}/details">{{deck.name}}</a></td>
       <td><a ng-show="model.currentUser._id === model.userId" class="btn btn--icon" href="#!/user/{{model.userId}}/deck/{{deck._id}}/edit">
-        <span class=" glyphicon glyphicon-pencil"></span>
+        <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit
       </a></td>
     </tr>
 </table>

@@ -6,9 +6,9 @@
       Theorycraftr
    </h1>
   </a>
-  <a onclick="window.history.back();" class="btn">Back</a>
+  <a onclick="window.history.back();" class="btn"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
   <a ng-hide="model.currentUser._id" href="#!/login" class="btn">Login</a>
   <a ng-hide="model.currentUser._id" href="#!/register" class="btn">Register</a>
-  <a ng-show="model.currentUser._id" href="#!/profile/{{model.currentUser._id}}" class="btn">Profile</a>
+  <a ng-show="model.currentUser._id" href="#!/profile/{{model.currentUser._id}}" class="btn"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Profile</a>
   <a ng-show="model.currentUser.role === 'Administrator'" href="#!/admin" class="btn">Admin</a>
 </nav>
