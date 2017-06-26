@@ -2,8 +2,8 @@
 <h2>{{model.user.username}}</h2>
 <div class="col-xs-2 col-xs-offset-5"><div class="details">
   <p>{{model.user.role}} since: {{model.user.registrationDate.slice(0, 10)}}</p>
-  <a href="#!/user/{{model.userId}}/deck/new" class="btn btn--icon"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Build Deck</a>
-  <a href="#!/user/{{model.userId}}/decks" class="btn btn--icon"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;Decks</a>
+  <a href="#!/user/{{model.userId}}/deck/new" class="btn btn--icon"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;Build Deck</a>
+  <a href="#!/user/{{model.userId}}/decks" class="btn btn--icon"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Decks</a>
 </div></div>
 <form>
   <div class="container col-xs-4 col-xs-offset-4">
@@ -26,8 +26,8 @@
       </p>
     </form>
     <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.updateUser(newInfo)" class="btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Update Profile</a>
-    <a ng-click="model.logout()" class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a>
-    <a ng-click="model.deleteUser()" class="btn"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Delete Profile</a>
+    <a ng-click="model.updateUser(newInfo)" class="btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Update Profile</a>
+    <a ng-click="model.logout()" class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Logout</a>
+    <a ng-click="model.deleteUser()" class="btn"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;&nbsp;Delete Profile</a>
   </div>
 </form>
