@@ -23,13 +23,14 @@
   </div>
   <a ng-click="model.createUser(newUser)" class="btn">Save User</a>
 </form>
-<table>
+<table class="table">
   <tr>
     <th>Username</th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>E-mail</th>
     <th>Role</th>
+    <th>Controls</th>
   </tr>
   <tr ng-repeat="user in model.allUsers">
     <td>

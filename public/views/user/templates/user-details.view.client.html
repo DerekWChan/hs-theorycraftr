@@ -1,7 +1,9 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
 <h2>{{model.user.username}}</h2>
-<p>{{model.user.role}} since: {{model.user.registrationDate.slice(0, 10)}}</p>
-<p>{{model.user.firstName}}</p>
-<p>{{model.user.lastName}}</p>
-<p>{{model.user.email}}</p>
-<a href="#!/user/{{model.userId}}/decks" class="btn">Decks</a>
+<div class="details col-xs-2 col-xs-offset-5">
+  <p>{{model.user.role}} since: {{model.user.registrationDate.slice(0, 10)}}</p>
+  <p>{{model.user.firstName}}</p>
+  <p>{{model.user.lastName}}</p>
+  <p>{{model.user.email}}</p>
+  <a href="#!/user/{{model.userId}}/decks" class="btn">Decks</a>
+</div>
