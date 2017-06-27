@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:300");
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
 body {
   background-color: #FFF;
   font-family: "Nunito", sans-serif; }
@@ -7,7 +10,7 @@ a {
   text-decoration: none !important; }
 
 .form-control {
-  width: 31em;
+  width: 100%;
   margin: 0 auto; }
 
 ul {

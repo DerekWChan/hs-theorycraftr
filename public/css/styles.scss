@@ -9,6 +9,10 @@ $darkblue: #4AB0DA;
 $orange: #FA7921;
 $fontfamily: 'Nunito', sans-serif;
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
 body {
   background-color: $white;
   font-family: $fontfamily;
@@ -19,7 +23,7 @@ a {
 }
 
 .form-control {
-  width: 31em;
+  width: 100%;
   margin: 0 auto;
 }
 
