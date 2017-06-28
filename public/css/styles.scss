@@ -9,10 +9,6 @@ $darkblue: #4AB0DA;
 $orange: #FA7921;
 $fontfamily: 'Nunito', sans-serif;
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
-}
-
 body {
   background-color: $white;
   font-family: $fontfamily;
@@ -23,7 +19,6 @@ a {
 }
 
 .form-control {
-  width: 25em;
   margin: 0 auto;
 }
 
@@ -123,7 +118,7 @@ table {
 }
 
 .catalog {
-  padding: 1em;
+  padding: 0.25em;
   height: 29em;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -131,18 +126,19 @@ table {
 }
 
 .available_cards .catalog_card {
-  height: 195px;
+  display: inline-block;
+  margin: -14px -24px;
 }
 
 .user_deck .catalog_card {
   width: 100%;
-  padding: 0.5em 0;
-  margin: 0.15em auto;
+  padding: 0.5em;
   background-color: $charcoal;
   font-size: 10px;
 }
 
 .catalog_card {
+  cursor: pointer;
   margin: 0;
   padding: 0;
   width: 140px;
@@ -153,7 +149,7 @@ table {
 }
 
 .catalog_card img {
-  width: 150px;
+  width: 75%;
 }
 
 .catalog_card a {
@@ -166,7 +162,8 @@ table {
   float: left;
   margin: 0 1em;
   border-radius: 2em;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.9em;
+  font-size: 0.8em;
 }
 
 .card_name {
