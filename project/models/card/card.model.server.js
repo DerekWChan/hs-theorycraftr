@@ -23,8 +23,12 @@ function removeCardFromDeck(cardId, deckId) {
 
 function findAllCardsInDeck(deckId) {
   return cardModel.find({
-    _deck: deckId
-  });
+      _deck: deckId
+    })
+    .sort({
+      cost: 1,
+      name: 1
+    });
 }
 
 function findCardCopiesInDeck(cardId, deckId) {

@@ -27,7 +27,7 @@
         deckService.findAllCardsInDeck(model.deck._id)
           .then(function(response) {
             model.deckList = response;
-          })
+          });
       }
 
       function deckNotFound() {
@@ -65,13 +65,20 @@
     }
 
     function addCardToDeck(card) {
-      if (model.deck._cards.length === 30) {
+      if (model.deckList.length >= 30) {
         model.message = "Your deck is already full!";
+        return;
       } else {
         deckService.findCardCopiesInDeck(card.cardId, model.deckId)
           .then(function(response) {
-            if (response.length === 2) {
-              model.message = "There can only be two copies of \'" + card.name + "\' in a deck!";
+            // legendary check
+            if (card.rarity === 'Legendary' && response.length >= 1) {
+              model.message = "There can only be one \'" + card.name + "\' in a deck.";
+              return;
+            }
+            if (response.length >= 2) { // max copy check
+              model.message = "There are already two copies of \'" + card.name + "\' in your deck.";
+              return;
             } else {
               deckService.addCardToDeck(card, model.deckId)
                 .then(function() {
