@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
 var cardSchema = mongoose.Schema({
+  _deck: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'DeckModel'
+  },
   cardId: String,
   dbfId: String,
-  copyNum: Number,
   name: String,
   cardSet: String,
   type: String,
@@ -22,6 +25,8 @@ var cardSchema = mongoose.Schema({
   mechanics: [{
     name: String
   }]
+}, {
+  collection: 'cards'
 });
 
 module.exports = cardSchema;
