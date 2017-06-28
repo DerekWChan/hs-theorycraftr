@@ -10,7 +10,7 @@
       <label>Password</label>
       <input required ng-model="password" class="form-control" type="password" placeholder="Password"></input>
     </div>
-    <div ng-show="model.message" class="alert">{{model.message}}</div>
+    <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
     <a ng-click="model.login(username, password)" class="btn">Login</a>
     <a href="/auth/facebook" class="btn">
       <span class="fa fa-facebook"></span> Facebook

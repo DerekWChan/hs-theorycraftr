@@ -7,7 +7,7 @@
       <input required ng-model="name" class="form-control" type="text" placeholder="Deck Name"></input>
     </div>
     <div class="form-group">
-      <label>Format</format>
+      <label>Format</label>
       <select required class="form-control" ng-model="format">
         <option value="Standard">Standard</option>
         <option value="Wild">Wild</option>
@@ -27,7 +27,7 @@
         <option value="Warrior">Warrior</option>
       </select>
     </div>
-    <div ng-show="model.message" class="alert">{{model.message}}</div>
+    <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
     <a ng-click="model.createDeck(name, playerClass, format)" class="btn">Create Deck</a>
   </div>
 </form>

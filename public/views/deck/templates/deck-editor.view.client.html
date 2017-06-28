@@ -8,41 +8,43 @@
         <input ng-model="newInfo.name" class="form-control" type="text" placeholder="{{model.deck.name}}"></input>
       </div>
       <div class="form-group">
-        <label>Format</format>
-      <select ng-model="newInfo.format" class="form-control">
+        <label>Format</label>
+        <select ng-model="newInfo.format" class="form-control">
         <option value="Standard">Standard</option>
         <option value="Wild">Wild</option>
       </select>
-    </div>
-    <div class="form-group">{{model.deck.playerClass}}</div>
-    <div class="form-group">
-      <label>Description</label>
-      <textarea ng-model="newInfo.description" class="form-control" rows="3" columns="10" placeholder="{{model.deck.description}}"></textarea>
-    </div>
-    <div ng-show="model.message" class="alert">{{model.message}}</div>
-    <a ng-click="model.updateDeck(newInfo)" class="btn">Save Deck</a>
-    <a ng-click="model.deleteDeck()" class="btn">Delete Deck</a>
+      </div>
+      <div class="form-group">{{model.deck.playerClass}}</div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea ng-model="newInfo.description" class="form-control" rows="3" columns="10" placeholder="{{model.deck.description}}"></textarea>
+      </div>
+      <a ng-click="model.updateDeck(newInfo)" class="btn">Save Deck</a>
+      <a ng-click="model.deleteDeck()" class="btn">Delete Deck</a>
+      <div ng-show="model.message" class="alert alert-danger">
+        {{model.message}}
+      </div>
     </div>
   </div>
   </div>
   <div class="editor form-group">
     <ul>
-      <li class="col-xs-6 col-xs-offset-2">
+      <li class="col-xs-7 col-xs-offset-1">
         <label>Card Catalog</label>
         <ul class="catalog available_cards">
-          <li class="btn catalog_card" ng-repeat="card in model.cardCatalog">
-            <a ng-click="model.addCardToDeck(card)">
-              <div>
+          <li class="catalog_card" ng-repeat="card in model.cardCatalog">
+            <div>
+              <a ng-click="model.addCardToDeck(card)">
                 <img src="{{card.img}}">
-              </div>
-            </a>
+              </a>
+            </div>
           </li>
         </ul>
       </li>
-      <li class="col-xs-2">
-        <label>Your Deck</label>
+      <li class="col-xs-3">
+        <label>Your Deck</label> {{model.deck._cards.length}}/30
         <ul class="catalog list-group user_deck">
-          <li class="list-group-item btn catalog_card" ng-repeat="card in model.deck._cards">
+          <li class="list-group-item btn catalog_card" ng-repeat="card in model.deckList">
             <a ng-click="model.removeCardFromDeck(card)">
               <div>
                 <span class="card_mana-cost">{{card.cost}}</span>
