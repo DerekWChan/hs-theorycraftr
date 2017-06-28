@@ -67,7 +67,7 @@ table {
   font-size: 1.5em; }
 
 .home .home_search {
-  margin: 2em auto; }
+  margin-bottom: 2em; }
 
 .home .home_decks {
   margin: 2em auto; }
@@ -90,6 +90,8 @@ table {
   overflow-y: scroll;
   overflow-x: hidden;
   border: 1px solid #AAA; }
+  .catalog.available_cards {
+    min-width: 58.33333333%; }
 
 .available_cards .catalog_card {
   display: inline-block;

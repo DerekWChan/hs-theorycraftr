@@ -1,8 +1,7 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
 <div class="home">
   <p class="home_slogan">A lightweight, responsive Hearthstone deck builder for the web.</p>
-  <!-- <a href="#!/user/{{model.currentUser._id}}/deck/new" class="btn">+ Build a Deck</a> -->
-  <div class="home_search"><a href="#!/search" class="btn"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Search Decks</a></div>
+  <div class="home_search col-xs-6 col-xs-offset-3"><input ng-model="keywords" class="form-control" type="search" placeholder="Search Decks"></div>
   <div class="container home_decks">
     <table class="table">
       <tr>
@@ -12,7 +11,7 @@
         <th>Format</th>
         <th>Class</th>
       </tr>
-      <tr ng-repeat="deck in model.allDecks">
+      <tr ng-repeat="deck in model.allDecks | filter: { name: keywords }">
         <td><a href="#!/user/{{deck._user}}/deck/{{deck._id}}/details">{{deck.name}}</a></td>
         <td><a href="#!/user/{{deck._user}}">{{deck.creatorName}}</a></td>
         <td>{{deck.createdOn.slice(0, 10)}}</td>
