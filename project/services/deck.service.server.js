@@ -1,13 +1,16 @@
 var app = require('../../express');
 var unirest = require('unirest');
 var deckModel = require('../models/deck/deck.model.server.js');
+var cardModel = require('../models/card/card.model.server.js');
 
 app.post('/api/user/:userId/deck', createDeck);
 app.post('/api/decks/search', searchDecks);
 app.get('/api/decks', findAllDecks);
 app.get('/api/user/:userId/deck/:deckId', findDeckById);
 app.get('/api/user/:userId/decks', findAllDecksByUser);
-app.get('/api/user/:userId/deck/:deckId/catalog', findAllCardsForDeck);
+app.get('/api/user/:userId/deck/:deckId/cards', findAllCardsInDeck);
+app.get('/api/user/:userId/deck/:deckId/catalog', catalogAllCardsForDeck);
+app.get('/api/user/:userId/deck/:deckId/cards/find/:cardId', findCardCopiesInDeck);
 app.put('/api/user/:userId/deck/:deckId', updateDeck);
 app.put('/api/user/:userId/deck/:deckId/cards/add', addCardToDeck);
 app.put('/api/user/:userId/deck/:deckId/cards/remove', removeCardFromDeck);
@@ -77,7 +80,16 @@ function findAllDecksByUser(req, res) {
     });
 }
 
-function findAllCardsForDeck(req, res) {
+function findAllCardsInDeck(req, res) {
+  var deckId = req.params.deckId;
+
+  cardModel.findAllCardsInDeck(deckId)
+    .then(function(cards) {
+      res.json(cards);
+    });
+}
+
+function catalogAllCardsForDeck(req, res) {
   var format = req.query.format;
   var playerClass = req.query.playerClass;
 
@@ -89,12 +101,22 @@ function findAllCardsForDeck(req, res) {
     });
 }
 
+function findCardCopiesInDeck(req, res) {
+  var deckId = req.params.deckId;
+  var cardId = req.params.cardId;
+
+  cardModel.findCardCopiesInDeck(cardId, deckId)
+    .then(function(copies) {
+      res.json(copies);
+      return;
+    })
+}
+
 function addCardToDeck(req, res) {
   var deckId = req.params.deckId;
   var card = req.body;
-  card.copyNum = new Date().getTime();
 
-  deckModel.addCardToDeck(card, deckId)
+  cardModel.addCardToDeck(card, deckId)
     .then(function() {
       res.sendStatus(200);
     });
@@ -113,7 +135,6 @@ function removeCardFromDeck(req, res) {
 function addCommentToDeck(req, res) {
   var deckId = req.params.deckId;
   var newComment = req.body;
-  console.log(newComment);
 
   deckModel.addCommentToDeck(newComment, deckId)
     .then(function() {

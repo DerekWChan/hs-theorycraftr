@@ -12,7 +12,9 @@
       searchDecks: searchDecks,
       findDeckById: findDeckById,
       findAllDecksByUser: findAllDecksByUser,
-      findAllCardsForDeck: findAllCardsForDeck,
+      findAllCardsInDeck: findAllCardsInDeck,
+      catalogAllCardsForDeck: catalogAllCardsForDeck,
+      findCardCopiesInDeck: findCardCopiesInDeck,
       addCardToDeck: addCardToDeck,
       removeCardFromDeck: removeCardFromDeck,
       addCommentToDeck: addCommentToDeck,
@@ -83,13 +85,31 @@
         });
     }
 
-    function findAllCardsForDeck(format, playerClass) {
+    function findAllCardsInDeck(deckId) {
+      var url = '/api/user/:userId/deck/' + deckId + '/cards';
+
+      return $http.get(url)
+        .then(function(response) {
+          return response.data;
+        })
+    }
+
+    function catalogAllCardsForDeck(format, playerClass) {
       var url = '/api/user/:userId/deck/:deckId/catalog?format=' + format + '&playerClass=' + playerClass;
 
       return $http.get(url)
         .then(function(response) {
           return response.data;
         });
+    }
+
+    function findCardCopiesInDeck(cardId, deckId) {
+      var url = '/api/user/:userId/deck/' + deckId + '/cards/find/' + cardId;
+
+      return $http.get(url)
+        .then(function(response) {
+            return response.data;
+        })
     }
 
     function addCardToDeck(card, deckId) {

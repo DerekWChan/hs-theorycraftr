@@ -20,10 +20,14 @@
 
       function deckFound(response) {
         model.deck = response;
-        deckService.findAllCardsForDeck(response.format, response.playerClass)
+        deckService.catalogAllCardsForDeck(model.deck.format, model.deck.playerClass)
           .then(function(response) {
             model.cardCatalog = response;
           });
+        deckService.findAllCardsInDeck(model.deck._id)
+          .then(function(response) {
+            model.deckList = response;
+          })
       }
 
       function deckNotFound() {
@@ -61,15 +65,20 @@
     }
 
     function addCardToDeck(card) {
-      deckService.addCardToDeck(card, model.deckId)
-        .then(addSuccess, addFailure);
-
-      function addSuccess() {
-        $route.reload();
-      }
-
-      function addFailure() {
-        model.message = "Unable to add " + card.name;
+      if (model.deck._cards.length === 30) {
+        model.message = "Your deck is already full!";
+      } else {
+        deckService.findCardCopiesInDeck(card.cardId, model.deckId)
+          .then(function(response) {
+            if (response.length === 2) {
+              model.message = "There can only be two copies of " + card.name + " in a deck!";
+            } else {
+              deckService.addCardToDeck(card, model.deckId)
+                .then(function() {
+                  $route.reload();
+                });
+            }
+          });
       }
     }
 

@@ -15,9 +15,10 @@ var deckSchema = mongoose.Schema({
   format: String,
   playerClass: String,
   description: String,
-  _cards: {
-    type: [cardSchema]
-  },
+  _cards: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'CardModel'
+  }],
   upvotes: {
     type: Number,
     default: 0
