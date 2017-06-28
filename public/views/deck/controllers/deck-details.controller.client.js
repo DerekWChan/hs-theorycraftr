@@ -17,6 +17,10 @@
 
       function deckFound(response) {
         model.deck = response;
+        deckService.findAllCardsInDeck(model.deck._id)
+          .then(function(response) {
+            model.deckList = response;
+          });
       }
 
       function deckNotFound() {

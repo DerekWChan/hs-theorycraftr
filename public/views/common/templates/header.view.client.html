@@ -1,10 +1,12 @@
 <nav class="main_nav">
   <a href="#!/">
-    <h1>
+    <div class="main_brand">
+      <h1>
       Hearthstone
-      <img width="50px" height="50px" src="https://www.spreadshirt.com/image-server/v1/designs/1004981592,width=178,height=178/hearthstone-logo.png">
+        <img class="main_logo" width="50px" height="50px" src="https://www.spreadshirt.com/image-server/v1/designs/1004981592,width=178,height=178/hearthstone-logo.png">
       Theorycraftr
-   </h1>
+      </h1>
+    </div>
   </a>
   <a onclick="window.history.back();" class="btn"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back</a>
   <a ng-hide="model.currentUser._id" href="#!/login" class="btn">Login</a>

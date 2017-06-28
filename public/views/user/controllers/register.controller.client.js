@@ -28,7 +28,7 @@
         .then(usernameUnavailable, usernameAvailable);
 
       function usernameUnavailable() {
-        model.message = "The username " + username + " is not available.";
+        model.message = "The username \'" + username + "\' is not available.";
       }
 
       function usernameAvailable() {

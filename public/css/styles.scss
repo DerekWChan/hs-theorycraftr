@@ -12,10 +12,18 @@ $fontfamily: 'Nunito', sans-serif;
 body {
   background-color: $white;
   font-family: $fontfamily;
+  text-align: center;
 }
 
 a {
   text-decoration: none !important;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.form-group {
+  text-align: left;
 }
 
 .form-control {
@@ -29,10 +37,6 @@ ul {
 li {
   list-style-type: none;
   font-size: 1.25em;
-}
-
-div {
-  text-align: center;
 }
 
 .btn {
@@ -78,6 +82,12 @@ table {
   padding: 3em;
   background-color: $charcoal;
   color: $white;
+
+  .main_logo {
+    background-color: white;
+    border-radius: 25px;
+    padding: 5px;
+  }
 
   a {
     color: $white;

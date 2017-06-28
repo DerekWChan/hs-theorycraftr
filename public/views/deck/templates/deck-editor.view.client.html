@@ -27,7 +27,7 @@
     </div>
   </div>
   </div>
-  <div class="editor form-group">
+  <div class="editor">
     <ul>
       <li class="col-xs-7 col-xs-offset-1">
         <label>Card Catalog</label>
@@ -42,7 +42,7 @@
         </ul>
       </li>
       <li class="col-xs-3">
-        <label>Your Deck</label> {{model.deck._cards.length}}/30
+        <label>Your Deck</label> {{model.deckList.length}}/30
         <ul class="catalog list-group user_deck">
           <li class="list-group-item btn catalog_card" ng-repeat="card in model.deckList">
             <a ng-click="model.removeCardFromDeck(card)">

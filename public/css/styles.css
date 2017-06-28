@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:300");
 body {
   background-color: #FFF;
-  font-family: "Nunito", sans-serif; }
+  font-family: "Nunito", sans-serif;
+  text-align: center; }
 
 a {
   text-decoration: none !important; }
+  a:hover {
+    opacity: 0.8; }
+
+.form-group {
+  text-align: left; }
 
 .form-control {
   margin: 0 auto; }
@@ -15,9 +21,6 @@ ul {
 li {
   list-style-type: none;
   font-size: 1.25em; }
-
-div {
-  text-align: center; }
 
 .btn {
   font-size: 1.25em;
@@ -51,6 +54,10 @@ table {
   padding: 3em;
   background-color: #555;
   color: #FFF; }
+  .main_nav .main_logo {
+    background-color: white;
+    border-radius: 25px;
+    padding: 5px; }
   .main_nav a {
     color: #FFF; }
 
