@@ -121,10 +121,10 @@
         });
     }
 
-    function removeCardFromDeck(card, deckId) {
-      var url = '/api/user/:userId/deck/' + deckId + '/cards/remove';
+    function removeCardFromDeck(cardId, deckId) {
+      var url = '/api/user/:userId/deck/' + deckId + '/cards/remove/' + cardId;
 
-      return $http.put(url, card)
+      return $http.delete(url)
         .then(function(response) {
           return response.data;
         });

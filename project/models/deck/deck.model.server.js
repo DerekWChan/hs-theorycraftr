@@ -9,8 +9,6 @@ deckModel.findAllDecks = findAllDecks;
 deckModel.searchDecks = searchDecks;
 deckModel.findDeckById = findDeckById;
 deckModel.findAllDecksByUser = findAllDecksByUser;
-deckModel.addCardToDeck = addCardToDeck;
-deckModel.removeCardFromDeck = removeCardFromDeck;
 deckModel.addCommentToDeck = addCommentToDeck;
 deckModel.upvoteDeck = upvoteDeck;
 
@@ -55,33 +53,6 @@ function findDeckById(deckId) {
 function findAllDecksByUser(userId) {
   return deckModel.find({
     _user: userId
-  });
-}
-
-function addCardToDeck(card, deckId) {
-  return deckModel.update({
-    _id: deckId
-  }, {
-    $push: {
-      _cards: {
-        $each: [card],
-        $sort: {
-          cost: 1
-        }
-      }
-    }
-  });
-}
-
-function removeCardFromDeck(card, deckId) {
-  return deckModel.update({
-    _id: deckId
-  }, {
-    $pull: {
-      _cards: {
-        cardId: card.cardId
-      }
-    }
   });
 }
 

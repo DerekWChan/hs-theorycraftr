@@ -71,7 +71,7 @@
         deckService.findCardCopiesInDeck(card.cardId, model.deckId)
           .then(function(response) {
             if (response.length === 2) {
-              model.message = "There can only be two copies of " + card.name + " in a deck!";
+              model.message = "There can only be two copies of \'" + card.name + "\' in a deck!";
             } else {
               deckService.addCardToDeck(card, model.deckId)
                 .then(function() {
@@ -83,7 +83,7 @@
     }
 
     function removeCardFromDeck(card) {
-      deckService.removeCardFromDeck(card, model.deckId)
+      deckService.removeCardFromDeck(card._id, model.deckId)
         .then(function() {
           $route.reload();
         });
