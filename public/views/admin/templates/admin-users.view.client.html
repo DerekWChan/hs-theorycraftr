@@ -1,29 +1,29 @@
 <div ng-include="'views/common/templates/header.view.client.html'"></div>
 <div class="col-xs-4 col-xs-offset-4">
-  <form ng-show="createForm" class="col-xs-4 col-xs-offset-3">
-    <a ng-click="createForm = !createForm" class="btn">+ Create User</a>
-    <div>
-      <p class="form-group"><label>Username</label>
-        <input ng-model="newUser.username" class="form-control"></input>
-      </p>
-      <p class="form-group"><label>Password</label>
-        <input ng-model="newUser.password" class="form-control"></input>
-      </p>
-      <p class="form-group"><label>First Name</label>
-        <input ng-model="newUser.firstName" class="form-control"></input>
-      </p>
-      <p class="form-group"><label>Last Name</label>
-        <input ng-model="newUser.lastName" class="form-control"></input>
-      </p>
-      <p class="form-group"><label>E-mail</label>
-        <input ng-model="newUser.email" class="form-control"></input>
-      </p>
-      <p class="form-group"><label>Role</label>
-        <input ng-model="newUser.role" class="form-control"></input>
-      </p>
-    </div>
-    <a ng-click="model.createUser(newUser)" class="btn">Save User</a>
-  </form>
+  <a ng-click="createForm = !createForm" class="btn">+ Create User</a>
+  <form ng-show="createForm">
+  <div>
+    <p class="form-group"><label>Username</label>
+      <input ng-model="newUser.username" class="form-control"></input>
+    </p>
+    <p class="form-group"><label>Password</label>
+      <input ng-model="newUser.password" class="form-control"></input>
+    </p>
+    <p class="form-group"><label>First Name</label>
+      <input ng-model="newUser.firstName" class="form-control"></input>
+    </p>
+    <p class="form-group"><label>Last Name</label>
+      <input ng-model="newUser.lastName" class="form-control"></input>
+    </p>
+    <p class="form-group"><label>E-mail</label>
+      <input ng-model="newUser.email" class="form-control"></input>
+    </p>
+    <p class="form-group"><label>Role</label>
+      <input ng-model="newUser.role" class="form-control"></input>
+    </p>
+  </div>
+  <a ng-click="model.createUser(newUser)" class="btn">Save User</a>
+</form>
 </div>
 <table class="table">
   <tr>
